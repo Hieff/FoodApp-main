@@ -109,9 +109,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="v93-pw-CuA" kind="presentation" identifier="toRecipeDisplay" modalPresentationStyle="fullScreen" id="PxN-e1-tUC"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -120,10 +117,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="KUd-oZ-fCx"/>
+                    <connections>
+                        <segue destination="v93-pw-CuA" kind="presentation" identifier="toRecipeDisplay" modalPresentationStyle="fullScreen" id="ApQ-ek-TEv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdh-kV-Qll" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="746" y="4"/>
+            <point key="canvasLocation" x="769" y="4"/>
         </scene>
         <!--RecipeViewController-->
         <scene sceneID="Suk-KD-pB5">
