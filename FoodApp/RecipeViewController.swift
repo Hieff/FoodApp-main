@@ -14,18 +14,20 @@ class RecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-            titleText.text = selectedRecipe?.strMeal ?? "no title"
-            instructionText.text = selectedRecipe?.strInstructions ?? "no instruction"
-            print(selectedRecipe?.strMealThumb ?? "none")
-            if(selectedRecipe?.strImageSource != nil){
-                print("working")
-                recipeImage.loadFrom(URLAddress: (selectedRecipe?.strMealThumb)!)
-            }
-            var time = cookingTime()
-            if(time <= 0){
-                time = 60
-            }
-            timeText.text = "Time: ~" + String(Double(cookingTime()) * 1.4) + " minutes"
+        titleText.text = selectedRecipe?.strMeal ?? "no title"
+        instructionText.text = selectedRecipe?.strInstructions ?? "no instruction"
+        print(selectedRecipe?.strMealThumb ?? "none")
+        if(selectedRecipe?.strImageSource != nil){
+            print("working")
+            recipeImage.loadFrom(URLAddress: (selectedRecipe?.strMealThumb)!)
+        }
+        var time = cookingTime()
+        if(time <= 0){
+            time = 60
+        }
+        let updateByFourtyPercent = Double(cookingTime()) * 1.4
+        let rounded = updateByFourtyPercent - (updateByFourtyPercent.truncatingRemainder(dividingBy: 1.0))
+        timeText.text = "Time: ~" + String(rounded) + " minutes"
     }
     
     
@@ -74,10 +76,12 @@ class RecipeViewController: UIViewController {
         return integer
         
     }
+    
+
 
     
     @IBOutlet weak var recipeImage: UIImageView!
-    @IBOutlet weak var starImage: UIImageView!
+    @IBOutlet weak var starButton: UIButton!
     @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var timeText: UILabel!
     @IBOutlet weak var calorieText: UILabel!
