@@ -15,7 +15,7 @@ struct FatSecretAPI: Decodable {
         let number_of_servings: String?
         let preparation_time_min: String?
         let rating: String?
-        let serving_sizes: Servings?
+        //let serving_sizes: Servings?
         
         
     }
