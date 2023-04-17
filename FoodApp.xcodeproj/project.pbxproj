@@ -17,6 +17,8 @@
 		01F5241C29D348D900BF31DF /* SceneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5241B29D348D900BF31DF /* SceneTableViewController.swift */; };
 		01F5241F29D4F6FE00BF31DF /* MealDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5241E29D4F6FE00BF31DF /* MealDb.swift */; };
 		01F5242129D5976800BF31DF /* FetchedMealManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5242029D5976800BF31DF /* FetchedMealManager.swift */; };
+		01F5242929EDAA8200BF31DF /* FatSecretManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5242829EDAA8200BF31DF /* FatSecretManager.swift */; };
+		01F5242B29EDAAAF00BF31DF /* FatSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5242A29EDAAAF00BF31DF /* FatSecret.swift */; };
 		2C1CB05029ED6664005ED07F /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		01F5241B29D348D900BF31DF /* SceneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTableViewController.swift; sourceTree = "<group>"; };
 		01F5241E29D4F6FE00BF31DF /* MealDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDb.swift; sourceTree = "<group>"; };
 		01F5242029D5976800BF31DF /* FetchedMealManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedMealManager.swift; sourceTree = "<group>"; };
+		01F5242829EDAA8200BF31DF /* FatSecretManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatSecretManager.swift; sourceTree = "<group>"; };
+		01F5242A29EDAAAF00BF31DF /* FatSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatSecret.swift; sourceTree = "<group>"; };
 		2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +70,7 @@
 		018F3CF529B5EB3C003547F1 /* FoodApp */ = {
 			isa = PBXGroup;
 			children = (
+				01F5242729EDAA6400BF31DF /* FatSecretAPI */,
 				01F5241D29D4F6BB00BF31DF /* MealAPI */,
 				018F3CF629B5EB3C003547F1 /* AppDelegate.swift */,
 				018F3CF829B5EB3C003547F1 /* SceneDelegate.swift */,
@@ -88,6 +93,15 @@
 				01F5242029D5976800BF31DF /* FetchedMealManager.swift */,
 			);
 			path = MealAPI;
+			sourceTree = "<group>";
+		};
+		01F5242729EDAA6400BF31DF /* FatSecretAPI */ = {
+			isa = PBXGroup;
+			children = (
+				01F5242829EDAA8200BF31DF /* FatSecretManager.swift */,
+				01F5242A29EDAAAF00BF31DF /* FatSecret.swift */,
+			);
+			path = FatSecretAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,9 +176,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				018F3CFB29B5EB3C003547F1 /* ViewController.swift in Sources */,
+				01F5242929EDAA8200BF31DF /* FatSecretManager.swift in Sources */,
 				018F3D0129B5EB3C003547F1 /* FoodApp.xcdatamodeld in Sources */,
 				018F3CF729B5EB3C003547F1 /* AppDelegate.swift in Sources */,
 				018F3CF929B5EB3C003547F1 /* SceneDelegate.swift in Sources */,
+				01F5242B29EDAAAF00BF31DF /* FatSecret.swift in Sources */,
 				2C1CB05029ED6664005ED07F /* RecipeViewController.swift in Sources */,
 				01F5241F29D4F6FE00BF31DF /* MealDb.swift in Sources */,
 				01F5241C29D348D900BF31DF /* SceneTableViewController.swift in Sources */,
@@ -318,7 +334,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FoodApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -345,7 +361,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FoodApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
