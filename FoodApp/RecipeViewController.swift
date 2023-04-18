@@ -10,6 +10,14 @@ import UIKit
 class RecipeViewController: UIViewController {
     
     var selectedRecipe: MealDb.Meals? = nil
+    
+    @IBOutlet weak var recipeImage: UIImageView!
+    @IBOutlet weak var starImage: UIImageView!
+    @IBOutlet weak var titleText: UILabel!
+    @IBOutlet weak var timeText: UILabel!
+    @IBOutlet weak var calorieText: UILabel!
+    @IBOutlet weak var instructionText: UITextView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +25,14 @@ class RecipeViewController: UIViewController {
         titleText.text = selectedRecipe?.strMeal ?? "no title"
         instructionText.text = selectedRecipe?.strInstructions ?? "no instruction"
         print(selectedRecipe?.strMealThumb ?? "none")
-        if(selectedRecipe?.strImageSource != nil){
-            print("working")
-            recipeImage.loadFrom(URLAddress: (selectedRecipe?.strMealThumb)!)
+    
+        if let imgSource = selectedRecipe?.strMealThumb {
+            print("Image: \(imgSource)")
+            ImageFinder().fetch(imgSource) { img in
+                DispatchQueue.main.async {
+                    self.recipeImage.image = img;
+                }
+            }
         }
         var time = cookingTime()
         if(time <= 0){
@@ -29,7 +42,7 @@ class RecipeViewController: UIViewController {
         let rounded = updateByFourtyPercent - (updateByFourtyPercent.truncatingRemainder(dividingBy: 1.0))
         timeText.text = "Time: ~" + String(rounded) + " minutes"
     }
-    
+
     
     // Calculating time it takes to cook the recipe
     func cookingTime() -> Int{
@@ -98,37 +111,4 @@ class RecipeViewController: UIViewController {
     }
     */
 
-}
-
-
-extension UIImageView {
-    func loadFrom(URLAddress: String) {
-        var pic = UIImage()
-        if let url = URL(string: URLAddress) {
-             let session = URLSession.shared
-            session.dataTask(with: url) { (data, response, err) in
-                if let err = err {
-                    print("Error loading picture\(err)")
-                    return;
-                }
-                do {
-                    print("doing")
-                    if let imageData = try? Data(contentsOf: url) {
-                        if let loadedImage = UIImage(data: imageData) {
-                            print("worked")
-                            pic = loadedImage
-                            
-                        } else {return}
-                    }
-                }
-                    
-                DispatchQueue.main.async(){
-                    self.image = pic
-                }
-                
-            }.resume()
-        
-            
-        }
-    }
 }

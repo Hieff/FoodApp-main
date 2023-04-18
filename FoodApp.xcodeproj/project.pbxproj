@@ -14,11 +14,14 @@
 		018F3D0129B5EB3C003547F1 /* FoodApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 018F3CFF29B5EB3C003547F1 /* FoodApp.xcdatamodeld */; };
 		018F3D0329B5EB41003547F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 018F3D0229B5EB41003547F1 /* Assets.xcassets */; };
 		018F3D0629B5EB41003547F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018F3D0429B5EB41003547F1 /* LaunchScreen.storyboard */; };
-		01F5241C29D348D900BF31DF /* SceneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5241B29D348D900BF31DF /* SceneTableViewController.swift */; };
+		01F5241C29D348D900BF31DF /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5241B29D348D900BF31DF /* SearchTableViewController.swift */; };
 		01F5241F29D4F6FE00BF31DF /* MealDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5241E29D4F6FE00BF31DF /* MealDb.swift */; };
 		01F5242129D5976800BF31DF /* FetchedMealManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5242029D5976800BF31DF /* FetchedMealManager.swift */; };
 		01F5242929EDAA8200BF31DF /* FatSecretManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5242829EDAA8200BF31DF /* FatSecretManager.swift */; };
 		01F5242B29EDAAAF00BF31DF /* FatSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5242A29EDAAAF00BF31DF /* FatSecret.swift */; };
+		01F5242F29EE137500BF31DF /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5242D29EE137500BF31DF /* SearchCell.swift */; };
+		01F5243029EE137500BF31DF /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F5242E29EE137500BF31DF /* SearchCell.xib */; };
+		01F5243329EE239800BF31DF /* ImageFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5243229EE239800BF31DF /* ImageFinder.swift */; };
 		2C1CB05029ED6664005ED07F /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,11 +35,14 @@
 		018F3D0229B5EB41003547F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		018F3D0529B5EB41003547F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		018F3D0729B5EB41003547F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01F5241B29D348D900BF31DF /* SceneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTableViewController.swift; sourceTree = "<group>"; };
+		01F5241B29D348D900BF31DF /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		01F5241E29D4F6FE00BF31DF /* MealDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDb.swift; sourceTree = "<group>"; };
 		01F5242029D5976800BF31DF /* FetchedMealManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedMealManager.swift; sourceTree = "<group>"; };
 		01F5242829EDAA8200BF31DF /* FatSecretManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatSecretManager.swift; sourceTree = "<group>"; };
 		01F5242A29EDAAAF00BF31DF /* FatSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatSecret.swift; sourceTree = "<group>"; };
+		01F5242D29EE137500BF31DF /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		01F5242E29EE137500BF31DF /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
+		01F5243229EE239800BF31DF /* ImageFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFinder.swift; sourceTree = "<group>"; };
 		2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +76,8 @@
 		018F3CF529B5EB3C003547F1 /* FoodApp */ = {
 			isa = PBXGroup;
 			children = (
+				01F5243129EE237700BF31DF /* Extensions */,
+				01F5242C29EE0E1D00BF31DF /* CustomSearch */,
 				01F5242729EDAA6400BF31DF /* FatSecretAPI */,
 				01F5241D29D4F6BB00BF31DF /* MealAPI */,
 				018F3CF629B5EB3C003547F1 /* AppDelegate.swift */,
@@ -80,7 +88,6 @@
 				018F3D0429B5EB41003547F1 /* LaunchScreen.storyboard */,
 				018F3D0729B5EB41003547F1 /* Info.plist */,
 				018F3CFF29B5EB3C003547F1 /* FoodApp.xcdatamodeld */,
-				01F5241B29D348D900BF31DF /* SceneTableViewController.swift */,
 				2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */,
 			);
 			path = FoodApp;
@@ -102,6 +109,24 @@
 				01F5242A29EDAAAF00BF31DF /* FatSecret.swift */,
 			);
 			path = FatSecretAPI;
+			sourceTree = "<group>";
+		};
+		01F5242C29EE0E1D00BF31DF /* CustomSearch */ = {
+			isa = PBXGroup;
+			children = (
+				01F5241B29D348D900BF31DF /* SearchTableViewController.swift */,
+				01F5242D29EE137500BF31DF /* SearchCell.swift */,
+				01F5242E29EE137500BF31DF /* SearchCell.xib */,
+			);
+			path = CustomSearch;
+			sourceTree = "<group>";
+		};
+		01F5243129EE237700BF31DF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				01F5243229EE239800BF31DF /* ImageFinder.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +189,7 @@
 			files = (
 				018F3D0629B5EB41003547F1 /* LaunchScreen.storyboard in Resources */,
 				018F3D0329B5EB41003547F1 /* Assets.xcassets in Resources */,
+				01F5243029EE137500BF31DF /* SearchCell.xib in Resources */,
 				018F3CFE29B5EB3C003547F1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -177,13 +203,15 @@
 			files = (
 				018F3CFB29B5EB3C003547F1 /* ViewController.swift in Sources */,
 				01F5242929EDAA8200BF31DF /* FatSecretManager.swift in Sources */,
+				01F5242F29EE137500BF31DF /* SearchCell.swift in Sources */,
 				018F3D0129B5EB3C003547F1 /* FoodApp.xcdatamodeld in Sources */,
 				018F3CF729B5EB3C003547F1 /* AppDelegate.swift in Sources */,
 				018F3CF929B5EB3C003547F1 /* SceneDelegate.swift in Sources */,
 				01F5242B29EDAAAF00BF31DF /* FatSecret.swift in Sources */,
+				01F5243329EE239800BF31DF /* ImageFinder.swift in Sources */,
 				2C1CB05029ED6664005ED07F /* RecipeViewController.swift in Sources */,
 				01F5241F29D4F6FE00BF31DF /* MealDb.swift in Sources */,
-				01F5241C29D348D900BF31DF /* SceneTableViewController.swift in Sources */,
+				01F5241C29D348D900BF31DF /* SearchTableViewController.swift in Sources */,
 				01F5242129D5976800BF31DF /* FetchedMealManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

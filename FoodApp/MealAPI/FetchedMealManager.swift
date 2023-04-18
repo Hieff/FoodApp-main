@@ -33,7 +33,6 @@ class FetchedMealManager {
         for char in "abcdefghijklmnopqrstuvwxyz" {
             fetchMeals(meal: String(char), err: "FetchAllMeals -> failed to decode meal api json.") { meals in
                 for meal in meals.meals {
-                    print("running")
                     callback(meal)
                 }
             }

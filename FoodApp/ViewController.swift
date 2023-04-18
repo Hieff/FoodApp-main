@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchBarField: UITextField!
     
     let mealManager: FetchedMealManager = FetchedMealManager()
+    let fatSecretManager: FatSecretManager = FatSecretManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SearchScene" {
-            let sceneSearchView = segue.destination as? SceneTableViewController
+            let sceneSearchView = segue.destination as? SearchTableViewController
             sceneSearchView?.searchInput = searchBarField.text!
             sceneSearchView?.mealManager = self.mealManager
         }

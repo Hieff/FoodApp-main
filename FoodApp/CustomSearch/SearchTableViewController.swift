@@ -8,50 +8,65 @@
 import UIKit
 
 
-class SceneTableViewController: UITableViewController {
+class SearchTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var searchInput: String = ""
     var mealManager: FetchedMealManager? = nil
     var selectedMeal: MealDb.Meals? = nil
 
+    @IBOutlet weak var searchTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
+        // Register custom table cell
+        searchTable.register(UINib(nibName: "SearchCell", bundle: nil), forCellReuseIdentifier: "searchCell")
+        
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0;//Choose your custom row height
+    }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return mealManager!.getMealsBySearch(name: searchInput).count
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchCell
         let meal = mealManager!.getMealsBySearch(name: searchInput)[indexPath.row]
-        content.text = meal.strMeal
-        // Configure the cell...
         
-        cell.contentConfiguration = content
-
+        cell.titleLabel.text = meal.strMeal
+        if let imgSource = meal.strMealThumb {
+            ImageFinder().fetch(imgSource) { img in
+                DispatchQueue.main.async {
+                    cell.imgView.image = img
+                }
+            }
+        }
+                
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedMeal = mealManager!.searchedMeals[indexPath.row]
         performSegue(withIdentifier: "toRecipeDisplay", sender: nil)
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toRecipeDisplay"){
