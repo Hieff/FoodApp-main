@@ -202,6 +202,9 @@
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Show Ingredients"/>
+                                <connections>
+                                    <action selector="showIngredientsButton:" destination="v93-pw-CuA" eventType="touchUpInside" id="GWY-1h-Tl3"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="kXS-W4-4XY">
                                 <rect key="frame" x="16" y="514" width="358" height="220"/>
@@ -255,12 +258,53 @@
                         <outlet property="starImage" destination="2Tm-7J-8PQ" id="mdm-CP-QKP"/>
                         <outlet property="timeText" destination="y6L-mT-2iX" id="QcH-9Q-Bgj"/>
                         <outlet property="titleText" destination="DrD-Oy-DCY" id="cg3-c8-hGg"/>
+                        <segue destination="64Q-wM-TkH" kind="show" identifier="toIngredients" id="tQW-v6-trt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXu-rF-8nJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="FFp-5v-btv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1581.5384615384614" y="3.5545023696682461"/>
+            <point key="canvasLocation" x="1535" y="4"/>
+        </scene>
+        <!--IngredientsViewController-->
+        <scene sceneID="RPd-Rh-kew">
+            <objects>
+                <viewController title="IngredientsViewController" id="64Q-wM-TkH" customClass="IngredientsViewController" customModule="FoodApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LEr-mM-6OK">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pq9-7s-hEA">
+                                <rect key="frame" x="16" y="47" width="358" height="463"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ingredientCell" id="1pa-zm-x8X">
+                                        <rect key="frame" x="0.0" y="50" width="358" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1pa-zm-x8X" id="ANM-BJ-5ee">
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="64Q-wM-TkH" id="Koe-GG-D0D"/>
+                                    <outlet property="delegate" destination="64Q-wM-TkH" id="xPL-Nc-YbD"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Yhh-8d-DfL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="l3L-c6-Au9"/>
+                    <connections>
+                        <outlet property="ingredientsTable" destination="Pq9-7s-hEA" id="hfj-m5-EdF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ipx-Pm-yJK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2344.6153846153848" y="3.5545023696682461"/>
         </scene>
     </scenes>
     <resources>

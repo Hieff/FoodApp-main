@@ -38,7 +38,17 @@ class RecipeViewController: UIViewController {
     }
 
     
-   
+    @IBAction func showIngredientsButton(_ sender: Any) {
+        performSegue(withIdentifier: "toIngredients", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toIngredients"){
+            let ingredientViewController = segue.destination as! IngredientsViewController
+            ingredientViewController.selectedRecipe = selectedRecipe
+        }
+    }
+    
 
     /*
      // MARK: - Navigation

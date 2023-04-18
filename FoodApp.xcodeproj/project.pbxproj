@@ -23,6 +23,7 @@
 		01F5243029EE137500BF31DF /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F5242E29EE137500BF31DF /* SearchCell.xib */; };
 		01F5243329EE239800BF31DF /* ImageFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5243229EE239800BF31DF /* ImageFinder.swift */; };
 		2C1CB05029ED6664005ED07F /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */; };
+		2CB6926929EEB179001D568A /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6926829EEB179001D568A /* IngredientsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		01F5242E29EE137500BF31DF /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		01F5243229EE239800BF31DF /* ImageFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFinder.swift; sourceTree = "<group>"; };
 		2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		2CB6926829EEB179001D568A /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				018F3D0729B5EB41003547F1 /* Info.plist */,
 				018F3CFF29B5EB3C003547F1 /* FoodApp.xcdatamodeld */,
 				2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */,
+				2CB6926829EEB179001D568A /* IngredientsViewController.swift */,
 			);
 			path = FoodApp;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CB6926929EEB179001D568A /* IngredientsViewController.swift in Sources */,
 				018F3CFB29B5EB3C003547F1 /* ViewController.swift in Sources */,
 				01F5242929EDAA8200BF31DF /* FatSecretManager.swift in Sources */,
 				01F5242F29EE137500BF31DF /* SearchCell.swift in Sources */,
