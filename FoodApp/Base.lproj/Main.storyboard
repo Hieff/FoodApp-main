@@ -161,7 +161,6 @@
                         <outlet property="searchBarField" destination="vr7-5E-PUo" id="s8D-uF-MJ4"/>
                         <outlet property="searchTable" destination="24h-gU-jcD" id="keR-PQ-yXY"/>
                         <segue destination="v93-pw-CuA" kind="show" identifier="toRecipeDisplay" id="x4u-TL-LyH"/>
-                        <segue destination="1vh-vv-fGh" kind="presentation" identifier="SearchToCalender" id="fl8-RR-cIq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ku1-9B-ORw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -280,6 +279,15 @@
                                     <outlet property="delegate" destination="64Q-wM-TkH" id="xPL-Nc-YbD"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Mh-Yo-sIY">
+                                <rect key="frame" x="64" y="571" width="238" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add to Basket"/>
+                                <connections>
+                                    <action selector="addToBasketButton:" destination="64Q-wM-TkH" eventType="touchUpInside" id="fHO-gA-2aR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Yhh-8d-DfL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -298,7 +306,7 @@
             <objects>
                 <viewController storyboardIdentifier="CalenderController" title="CalendarViewController" id="1vh-vv-fGh" customClass="CalendarViewController" customModule="FoodApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fuk-Hd-YCa" customClass="CalendarTableViewCell" customModule="FoodApp" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6Fx-mU-xjY">
@@ -311,7 +319,7 @@
                                 </connections>
                             </tableView>
                             <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ke-xl-ocy">
-                                <rect key="frame" x="-6" y="723" width="390" height="50"/>
+                                <rect key="frame" x="-6" y="780" width="390" height="50"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
@@ -344,6 +352,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kDJ-8b-d69" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="765" y="-670"/>
+        </scene>
+        <!--Basket View Controller-->
+        <scene sceneID="N23-Oq-blZ">
+            <objects>
+                <viewController storyboardIdentifier="BasketController" id="wIC-Qw-yKe" customClass="BasketViewController" customModule="FoodApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YAb-hW-s4T">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="h1v-7H-Cc3">
+                                <rect key="frame" x="16" y="47" width="358" height="688"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="basketCell" id="e0C-kc-QcZ">
+                                        <rect key="frame" x="0.0" y="50" width="358" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e0C-kc-QcZ" id="amm-tJ-k55">
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="wIC-Qw-yKe" id="ylN-F8-2el"/>
+                                    <outlet property="delegate" destination="wIC-Qw-yKe" id="Amo-kg-EAW"/>
+                                </connections>
+                            </tableView>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ye7-hi-uKG">
+                                <rect key="frame" x="0.0" y="760" width="390" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="Home" image="house.fill" catalog="system" id="lQf-2a-nMO">
+                                        <color key="badgeColor" systemColor="labelColor"/>
+                                        <imageReference key="selectedImage" image="house.fill" catalog="system" symbolScale="large"/>
+                                    </tabBarItem>
+                                    <tabBarItem title="Calendar" image="calendar" catalog="system" id="4Ks-Ei-B4M"/>
+                                    <tabBarItem title="Search" image="magnifyingglass" catalog="system" id="CVF-Fr-SoH"/>
+                                    <tabBarItem title="Basket" image="basket.fill" catalog="system" id="LRq-IH-8zn">
+                                        <imageReference key="selectedImage" image="pencil" catalog="system" symbolScale="medium" variableValue="1"/>
+                                    </tabBarItem>
+                                </items>
+                                <tabBarAppearance key="standardAppearance">
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </tabBarAppearance>
+                                <connections>
+                                    <outlet property="delegate" destination="wIC-Qw-yKe" id="CvH-cG-hCm"/>
+                                </connections>
+                            </tabBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Upg-EM-Lsa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="basketTable" destination="h1v-7H-Cc3" id="J2j-id-3uz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q8W-94-obT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1743" y="-670"/>
         </scene>
     </scenes>
     <resources>

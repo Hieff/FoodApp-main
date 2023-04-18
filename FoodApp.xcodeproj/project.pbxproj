@@ -27,6 +27,7 @@
 		2CB6926C29EED4C4001D568A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6926B29EED4C4001D568A /* CalendarViewController.swift */; };
 		2CB6927029EED50B001D568A /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6926E29EED50B001D568A /* CalendarTableViewCell.swift */; };
 		2CB6927129EED50B001D568A /* CalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CB6926F29EED50B001D568A /* CalendarTableViewCell.xib */; };
+		2CB6927529EEEBE4001D568A /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6927429EEEBE4001D568A /* BasketViewController.swift */; };
 		5418DA4C29EEDEB500B5C391 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DA4B29EEDEB500B5C391 /* UserProfile.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		2CB6926B29EED4C4001D568A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		2CB6926E29EED50B001D568A /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		2CB6926F29EED50B001D568A /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
+		2CB6927429EEEBE4001D568A /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 		5418DA4B29EEDEB500B5C391 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 				018F3CF829B5EB3C003547F1 /* SceneDelegate.swift */,
 				018F3CFA29B5EB3C003547F1 /* ViewController.swift */,
 				018F3CFC29B5EB3C003547F1 /* Main.storyboard */,
+				2CB6927429EEEBE4001D568A /* BasketViewController.swift */,
 				018F3D0229B5EB41003547F1 /* Assets.xcassets */,
 				018F3D0729B5EB41003547F1 /* Info.plist */,
 				018F3CFF29B5EB3C003547F1 /* FoodApp.xcdatamodeld */,
@@ -233,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CB6927529EEEBE4001D568A /* BasketViewController.swift in Sources */,
 				2CB6926929EEB179001D568A /* IngredientsViewController.swift in Sources */,
 				018F3CFB29B5EB3C003547F1 /* ViewController.swift in Sources */,
 				01F5242929EDAA8200BF31DF /* FatSecretManager.swift in Sources */,

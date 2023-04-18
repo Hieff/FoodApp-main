@@ -13,6 +13,7 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var ingredientsTable: UITableView!
     var ingredientsList = [String]()
     var measurementList = [String]()
+    var combinedList = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,9 +66,6 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
         measurementList = filterNils(list: tempMeasurements)
         
         
-        
-        
-    
         // Do any additional setup after loading the view.
     }
     
@@ -97,6 +95,18 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
         cell.contentConfiguration = content
         return cell
     }
+    
+    
+    
+    @IBAction func addToBasketButton(_ sender: Any) {
+        var basket = UserDefaults.standard.array(forKey: "basket") ?? []
+        for x in ingredientsList{
+            basket.append(x)
+        }
+        UserDefaults.standard.set(basket, forKey: "basket")
+        
+    }
+    
     
     /*
     // MARK: - Navigation

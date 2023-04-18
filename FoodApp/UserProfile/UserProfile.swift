@@ -22,4 +22,12 @@ class UserProfile {
         defaults.set(basket, forKey: "basket")
         defaults.set(ratings, forKey: "ratings")
     }
+    
+    func getBasket() -> [String]{
+        return basket
+    }
+    
+    func updateBasket(input: [String]){
+        basket = input
+    }
 }
