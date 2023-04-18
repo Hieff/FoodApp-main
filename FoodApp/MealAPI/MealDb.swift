@@ -66,6 +66,54 @@ struct MealDb: Decodable {
         let strImageSource: String?
         let strCreativeCommonsConfirmed: String?
         let dateModified: String?
+        
+        // Calculating time it takes to cook the recipe
+        func cookingTime() -> Double{
+            let instructionsArray = strInstructions.components(separatedBy: " ")
+            var timeCounter = 0
+            var x = 0
+            
+            while x < instructionsArray.count{
+                if(instructionsArray[x].lowercased().contains("minutes") || instructionsArray[x].lowercased().contains("min")){
+                    if(instructionsArray[x-1].contains("-")){
+                        timeCounter += removingDash(input: instructionsArray[x-1])
+                    } else {
+                        timeCounter += Int(instructionsArray[x-1]) ?? 0
+                    }
+                }
+                if(instructionsArray[x].lowercased().contains("seconds") || instructionsArray[x].lowercased().contains("sec")){
+                    if(instructionsArray[x-1].contains("-")){
+                        timeCounter += removingDash(input: instructionsArray[x-1])
+                    } else {
+                        timeCounter += (Int(instructionsArray[x-1]) ?? 0) / 60
+                    }
+                    
+                }
+                if(instructionsArray[x].lowercased().contains("hours") || instructionsArray[x].lowercased().contains("hr")){
+                    if(instructionsArray[x-1].contains("-")){
+                        timeCounter += removingDash(input: instructionsArray[x-1])
+                    } else {
+                        timeCounter += (Int(instructionsArray[x-1]) ?? 0) * 60
+                    }
+                }
+                x = x + 1
+            }
+            if(timeCounter <= 0){
+                timeCounter = 60
+            }
+            let updateByFourtyPercent = Double(timeCounter) * 1.4
+            let rounded = updateByFourtyPercent - (updateByFourtyPercent.truncatingRemainder(dividingBy: 1.0))
+            return rounded
+        }
+        
+        func removingDash(input:String) -> Int {
+            let number = input.firstIndex(of: "-")!
+            var changedString = input[number...]
+            changedString.remove(at: changedString.firstIndex(of: "-")!)
+            let integer = Int(changedString) ?? 0
+            return integer
+        }
+        
     }
     
 }

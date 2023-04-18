@@ -60,6 +60,7 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
         let meal = mealManager!.getMealsBySearch(name: searchInput)[indexPath.row]
         
         cell.titleLabel.text = meal.strMeal
+        cell.timeLabel.text = "Time: ~" + String(meal.cookingTime()) + " minutes"
         if let imgSource = meal.strMealThumb {
             ImageFinder().fetch(imgSource) { img in
                 DispatchQueue.main.async {

@@ -34,62 +34,11 @@ class RecipeViewController: UIViewController {
                 }
             }
         }
-        var time = cookingTime()
-        if(time <= 0){
-            time = 60
-        }
-        let updateByFourtyPercent = Double(cookingTime()) * 1.4
-        let rounded = updateByFourtyPercent - (updateByFourtyPercent.truncatingRemainder(dividingBy: 1.0))
-        timeText.text = "Time: ~" + String(rounded) + " minutes"
+        timeText.text = "Time: ~" + String(selectedRecipe?.cookingTime() ?? 0) + " minutes"
     }
 
     
-    // Calculating time it takes to cook the recipe
-    func cookingTime() -> Int{
-        let instructionsArray = instructionText.text.components(separatedBy: " ")
-        var timeCounter = 0
-        var x = 0
-        while x < instructionsArray.count{
-            if(instructionsArray[x].lowercased().contains("minutes") || instructionsArray[x].lowercased().contains("min")){
-                print(instructionsArray[x-1])
-                if(instructionsArray[x-1].contains("-")){
-                    timeCounter += removingDash(input: instructionsArray[x-1])
-                } else {
-                    timeCounter += Int(instructionsArray[x-1]) ?? 0
-                }
-            }
-            if(instructionsArray[x].lowercased().contains("seconds") || instructionsArray[x].lowercased().contains("sec")){
-                print(instructionsArray[x-1])
-                if(instructionsArray[x-1].contains("-")){
-                    timeCounter += removingDash(input: instructionsArray[x-1])
-                } else {
-                    timeCounter += (Int(instructionsArray[x-1]) ?? 0) / 60
-                }
-                
-            }
-            if(instructionsArray[x].lowercased().contains("hours") || instructionsArray[x].lowercased().contains("hr")){
-                print(instructionsArray[x-1])
-                if(instructionsArray[x-1].contains("-")){
-                    timeCounter += removingDash(input: instructionsArray[x-1])
-                } else {
-                    timeCounter += (Int(instructionsArray[x-1]) ?? 0) * 60
-                }
-            }
-            x = x + 1
-        }
-        return timeCounter
-    }
-    
-    func removingDash(input:String) -> Int {
-        let number = input.firstIndex(of: "-")!
-        var changedString = input[number...]
-        changedString.remove(at: changedString.firstIndex(of: "-")!)
-        let integer = Int(changedString) ?? 0
-        print(integer)
-        return integer
-        
-    }
-    
+   
 
     /*
      // MARK: - Navigation
