@@ -27,7 +27,6 @@ class RecipeViewController: UIViewController {
         print(selectedRecipe?.strMealThumb ?? "none")
     
         if let imgSource = selectedRecipe?.strMealThumb {
-            print("Image: \(imgSource)")
             ImageFinder().fetch(imgSource) { img in
                 DispatchQueue.main.async {
                     self.recipeImage.image = img;

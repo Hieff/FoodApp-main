@@ -8,18 +8,23 @@
 import UIKit
 
 
-class SearchTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate{
+class SearchTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
     
     var searchInput: String = ""
     var mealManager: FetchedMealManager? = nil
     var selectedMeal: MealDb.Meals? = nil
+    var homeController: UIViewController?
     
     @IBOutlet weak var searchBarField: UITextField!
     
     @IBOutlet weak var searchTable: UITableView!
     
+    @IBOutlet weak var homeItem: UITabBarItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        
         searchBarField.addTarget(self, action: #selector(onSearch), for: .editingDidEndOnExit)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -67,11 +72,18 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return mealManager!.getMealsBySearch(name: searchInput).count
+        return (mealManager!.getMealsBySearch(name: searchInput).count == 0 ? 1 : mealManager!.getMealsBySearch(name: searchInput).count)
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if isEmpty() {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
+            var content = cell.defaultContentConfiguration()
+            content.text = "No items found! Try again."
+            cell.contentConfiguration = content
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchCell
         let meal = mealManager!.getMealsBySearch(name: searchInput)[indexPath.row]
         
@@ -89,6 +101,9 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isEmpty() {
+            return
+        }
         selectedMeal = mealManager!.searchedMeals[indexPath.row]
         performSegue(withIdentifier: "toRecipeDisplay", sender: nil)
     }
@@ -101,7 +116,45 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    func isEmpty() -> Bool {
+        if let meal = mealManager {
+            return meal.getMealsBySearch(name: searchInput).count == 0;
+        }
+        return false
+    }
+    
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){}
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        let title = item.title!
+        switch(title) {
+            case "Home":
+                let vc = storyboard!.instantiateViewController(withIdentifier: "HomeController")
+                vc.modalPresentationStyle = .fullScreen
+                self.dismiss(animated: true)
+                self.present(vc, animated: true)
+            
+            case "Search":
+                let vc = storyboard!.instantiateViewController(withIdentifier: "SearchController")
+                vc.modalPresentationStyle = .fullScreen
+                self.dismiss(animated: true)
+                self.present(vc, animated: true)
+            
+            case "Calendar":
+                let vc = storyboard!.instantiateViewController(withIdentifier: "CalendarController")
+                vc.modalPresentationStyle = .fullScreen
+                self.dismiss(animated: true)
+                self.present(vc, animated: true)
+            case "Basket":
+                let vc = storyboard!.instantiateViewController(withIdentifier: "BasketController")
+                vc.modalPresentationStyle = .fullScreen
+                self.dismiss(animated: true)
+                self.present(vc, animated: true)
+            
+            default: break;
+        }
+    }
+    
     
     /*
     // Override to support conditional editing of the table view.
