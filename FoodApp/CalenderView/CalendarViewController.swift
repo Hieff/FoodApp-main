@@ -9,13 +9,20 @@ import UIKit
 
 class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
     
+    @IBOutlet weak var calendarTable: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        calendarTable.register(UINib(nibName: "CalendarTableViewCell", bundle: nil), forCellReuseIdentifier: "calendarCell")
+    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 48
     }
     
-    @IBOutlet weak var calendarTable: UITableView!
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath) as! CalendarTableViewCell
         let time = indexPath.row * 30
@@ -25,15 +32,34 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        weak var pvc = self.presentingViewController
+        let title = item.title!
+        switch(title) {
+            case "Home":
+                self.dismiss(animated: true)
+            
+            case "Search":
+                self.dismiss(animated: false, completion: {
+                    let vc = self.storyboard!.instantiateViewController(withIdentifier: "searchController")
+                    vc.modalPresentationStyle = .fullScreen
+                    pvc?.present(vc, animated: true)
+                })
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        calendarTable.register(UINib(nibName: "CalendarTableViewCell", bundle: nil), forCellReuseIdentifier: "calendarCell")
+          
+            case "Basket":
+                self.dismiss(animated: false, completion: {
+                    let vc = self.storyboard!.instantiateViewController(withIdentifier: "BasketController")
+                    vc.modalPresentationStyle = .fullScreen
+                    pvc?.present(vc, animated: true)
+                })
+
+            
+            default: break;
+        }
     }
     
-
+    
     /*
     // MARK: - Navigation
 

@@ -27,6 +27,7 @@
 		2CB6926C29EED4C4001D568A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6926B29EED4C4001D568A /* CalendarViewController.swift */; };
 		2CB6927029EED50B001D568A /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6926E29EED50B001D568A /* CalendarTableViewCell.swift */; };
 		2CB6927129EED50B001D568A /* CalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CB6926F29EED50B001D568A /* CalendarTableViewCell.xib */; };
+		5418DA4C29EEDEB500B5C391 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DA4B29EEDEB500B5C391 /* UserProfile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		2CB6926B29EED4C4001D568A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		2CB6926E29EED50B001D568A /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		2CB6926F29EED50B001D568A /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
+		5418DA4B29EEDEB500B5C391 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		018F3CF529B5EB3C003547F1 /* FoodApp */ = {
 			isa = PBXGroup;
 			children = (
+				5418DA4A29EEDEA100B5C391 /* UserProfile */,
 				01F5243129EE237700BF31DF /* Extensions */,
 				01F5242C29EE0E1D00BF31DF /* CustomSearch */,
 				01F5242729EDAA6400BF31DF /* FatSecretAPI */,
@@ -147,6 +150,14 @@
 				2CB6926F29EED50B001D568A /* CalendarTableViewCell.xib */,
 			);
 			path = CalenderView;
+			sourceTree = "<group>";
+		};
+		5418DA4A29EEDEA100B5C391 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				5418DA4B29EEDEB500B5C391 /* UserProfile.swift */,
+			);
+			path = UserProfile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +245,7 @@
 				01F5243329EE239800BF31DF /* ImageFinder.swift in Sources */,
 				2C1CB05029ED6664005ED07F /* RecipeViewController.swift in Sources */,
 				01F5241F29D4F6FE00BF31DF /* MealDb.swift in Sources */,
+				5418DA4C29EEDEB500B5C391 /* UserProfile.swift in Sources */,
 				01F5241C29D348D900BF31DF /* SearchTableViewController.swift in Sources */,
 				2CB6926C29EED4C4001D568A /* CalendarViewController.swift in Sources */,
 				01F5242129D5976800BF31DF /* FetchedMealManager.swift in Sources */,

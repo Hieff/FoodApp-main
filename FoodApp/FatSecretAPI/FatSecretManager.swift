@@ -11,7 +11,7 @@ class FatSecretManager {
     
     
     init() {
-        fetchRequest("Pizza");
+        //fetchRequest("Pizza");
     }
     
     

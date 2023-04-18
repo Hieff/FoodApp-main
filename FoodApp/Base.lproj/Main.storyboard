@@ -50,13 +50,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UX4-sz-v8j">
-                                <rect key="frame" x="16" y="523" width="110" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FoZ-Y3-1eX">
                                 <rect key="frame" x="16" y="89" width="358" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -73,8 +66,8 @@
                                         <imageReference key="selectedImage" image="house.fill" catalog="system" symbolScale="large"/>
                                     </tabBarItem>
                                     <tabBarItem title="Calendar" image="calendar" catalog="system" id="Zzr-qe-ycr"/>
-                                    <tabBarItem title="Favourites" image="heart.fill" catalog="system" id="Lgj-xU-c5t"/>
-                                    <tabBarItem title="Profile" image="line.3.horizontal" catalog="system" id="kEm-Wz-i9d">
+                                    <tabBarItem title="Search" image="magnifyingglass" catalog="system" id="Lgj-xU-c5t"/>
+                                    <tabBarItem title="Basket" image="basket.fill" catalog="system" id="kEm-Wz-i9d">
                                         <imageReference key="selectedImage" image="pencil" catalog="system" symbolScale="medium" variableValue="1"/>
                                     </tabBarItem>
                                 </items>
@@ -82,7 +75,17 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tabBarAppearance>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2TO-Do-MNc"/>
+                                </connections>
                             </tabBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UX4-sz-v8j">
+                                <rect key="frame" x="16" y="577" width="110" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -99,13 +102,13 @@
         <!--SearchScene-->
         <scene sceneID="sAb-GV-Kpp">
             <objects>
-                <viewController storyboardIdentifier="SearchScene" title="SearchScene" modalPresentationStyle="fullScreen" id="ch2-01-4iQ" customClass="SearchTableViewController" customModule="FoodApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchController" title="SearchScene" modalPresentationStyle="fullScreen" id="ch2-01-4iQ" customClass="SearchTableViewController" customModule="FoodApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LS8-WH-mnF">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="24h-gU-jcD">
-                                <rect key="frame" x="16" y="140" width="358" height="621"/>
+                                <rect key="frame" x="16" y="201" width="358" height="560"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
@@ -126,18 +129,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u5h-HL-lVQ">
-                                <rect key="frame" x="-1" y="760" width="390" height="50"/>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E6j-Ky-PFW">
+                                <rect key="frame" x="9" y="770" width="390" height="50"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <tabBarItem title="Home" image="house.fill" catalog="system" id="UJB-Kr-JRr">
+                                    <tabBarItem title="Home" image="house.fill" catalog="system" id="Wg5-Qv-OOb">
                                         <color key="badgeColor" systemColor="labelColor"/>
                                         <imageReference key="selectedImage" image="house.fill" catalog="system" symbolScale="large"/>
                                     </tabBarItem>
-                                    <tabBarItem title="Calendar" image="calendar" catalog="system" id="d9i-JX-25v"/>
-                                    <tabBarItem title="Favourites" image="heart.fill" catalog="system" id="NTH-51-bMP"/>
-                                    <tabBarItem title="Profile" image="line.3.horizontal" catalog="system" id="elr-zb-ISX">
+                                    <tabBarItem title="Calendar" image="calendar" catalog="system" id="46r-74-LPl"/>
+                                    <tabBarItem title="Search" image="magnifyingglass" catalog="system" id="oiS-GT-nQj"/>
+                                    <tabBarItem title="Basket" image="basket.fill" catalog="system" id="R1b-VA-gnS">
                                         <imageReference key="selectedImage" image="pencil" catalog="system" symbolScale="medium" variableValue="1"/>
                                     </tabBarItem>
                                 </items>
@@ -146,7 +149,7 @@
                                     <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tabBarAppearance>
                                 <connections>
-                                    <outlet property="delegate" destination="ch2-01-4iQ" id="nFn-W9-3r2"/>
+                                    <outlet property="delegate" destination="ch2-01-4iQ" id="uSu-Oz-ttx"/>
                                 </connections>
                             </tabBar>
                         </subviews>
@@ -158,11 +161,12 @@
                         <outlet property="searchBarField" destination="vr7-5E-PUo" id="s8D-uF-MJ4"/>
                         <outlet property="searchTable" destination="24h-gU-jcD" id="keR-PQ-yXY"/>
                         <segue destination="v93-pw-CuA" kind="show" identifier="toRecipeDisplay" id="x4u-TL-LyH"/>
+                        <segue destination="1vh-vv-fGh" kind="presentation" identifier="SearchToCalender" id="fl8-RR-cIq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ku1-9B-ORw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="764.61538461538464" y="3.5545023696682461"/>
+            <point key="canvasLocation" x="790.76923076923072" y="3.5545023696682461"/>
         </scene>
         <!--RecipeViewController-->
         <scene sceneID="Suk-KD-pB5">
@@ -222,26 +226,6 @@
                                 <rect key="frame" x="38" y="103" width="315" height="212"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yQM-fF-peI">
-                                <rect key="frame" x="0.0" y="760" width="390" height="50"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="Home" image="house.fill" catalog="system" id="aBr-WW-c0R">
-                                        <color key="badgeColor" systemColor="labelColor"/>
-                                        <imageReference key="selectedImage" image="house.fill" catalog="system" symbolScale="large"/>
-                                    </tabBarItem>
-                                    <tabBarItem title="Calendar" image="calendar" catalog="system" id="0kE-aj-9UY"/>
-                                    <tabBarItem title="Favourites" image="heart.fill" catalog="system" id="rHb-ry-kBs"/>
-                                    <tabBarItem title="Profile" image="line.3.horizontal" catalog="system" id="Sce-QE-i7j">
-                                        <imageReference key="selectedImage" image="pencil" catalog="system" symbolScale="medium" variableValue="1"/>
-                                    </tabBarItem>
-                                </items>
-                                <tabBarAppearance key="standardAppearance">
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </tabBarAppearance>
-                            </tabBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="calorieCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lf4-kH-Dxx">
                                 <rect key="frame" x="16" y="399" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -314,7 +298,7 @@
             <objects>
                 <viewController storyboardIdentifier="CalenderController" title="CalendarViewController" id="1vh-vv-fGh" customClass="CalendarViewController" customModule="FoodApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fuk-Hd-YCa" customClass="CalendarTableViewCell" customModule="FoodApp" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6Fx-mU-xjY">
@@ -326,6 +310,29 @@
                                     <outlet property="delegate" destination="1vh-vv-fGh" id="cKk-jc-Ojk"/>
                                 </connections>
                             </tableView>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ke-xl-ocy">
+                                <rect key="frame" x="-6" y="723" width="390" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="Home" image="house.fill" catalog="system" id="8Dh-kU-12R">
+                                        <color key="badgeColor" systemColor="labelColor"/>
+                                        <imageReference key="selectedImage" image="house.fill" catalog="system" symbolScale="large"/>
+                                    </tabBarItem>
+                                    <tabBarItem title="Calendar" image="calendar" catalog="system" id="Nwc-W4-xuf"/>
+                                    <tabBarItem title="Search" image="magnifyingglass" catalog="system" id="ige-Gc-ost"/>
+                                    <tabBarItem title="Basket" image="basket.fill" catalog="system" id="fVD-ME-bjw">
+                                        <imageReference key="selectedImage" image="pencil" catalog="system" symbolScale="medium" variableValue="1"/>
+                                    </tabBarItem>
+                                </items>
+                                <tabBarAppearance key="standardAppearance">
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </tabBarAppearance>
+                                <connections>
+                                    <outlet property="delegate" destination="1vh-vv-fGh" id="pey-NU-Zhv"/>
+                                </connections>
+                            </tabBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MRc-aD-DbY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -336,14 +343,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kDJ-8b-d69" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3310.7692307692305" y="-279.38388625592415"/>
+            <point key="canvasLocation" x="765" y="-670"/>
         </scene>
     </scenes>
     <resources>
+        <image name="basket.fill" catalog="system" width="128" height="108"/>
         <image name="calendar" catalog="system" width="128" height="107"/>
-        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
-        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

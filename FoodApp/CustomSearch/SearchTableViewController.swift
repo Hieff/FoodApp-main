@@ -41,24 +41,6 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
         searchInput = searchBarField.text!
         searchTable.reloadData()
     }
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        let title = item.title
-        if(title == "Home"){
-            let vc = storyboard!.instantiateViewController(withIdentifier: "HomeController")
-            vc.modalPresentationStyle = .fullScreen
-            self.dismiss(animated: false)
-            self.present(vc, animated: true)
-        }
-        if(title == "Calendar"){
-            let vc = storyboard!.instantiateViewController(withIdentifier: "CalenderController")
-            vc.modalPresentationStyle = .fullScreen
-            self.dismiss(animated: false)
-            self.present(vc, animated: true)
-        }
-    }
-    
-
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -126,31 +108,27 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){}
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        weak var pvc = self.presentingViewController
         let title = item.title!
         switch(title) {
             case "Home":
-                let vc = storyboard!.instantiateViewController(withIdentifier: "HomeController")
-                vc.modalPresentationStyle = .fullScreen
                 self.dismiss(animated: true)
-                self.present(vc, animated: true)
-            
-            case "Search":
-                let vc = storyboard!.instantiateViewController(withIdentifier: "SearchController")
-                vc.modalPresentationStyle = .fullScreen
-                self.dismiss(animated: true)
-                self.present(vc, animated: true)
             
             case "Calendar":
-                let vc = storyboard!.instantiateViewController(withIdentifier: "CalendarController")
-                vc.modalPresentationStyle = .fullScreen
-                self.dismiss(animated: true)
-                self.present(vc, animated: true)
+                self.dismiss(animated: false, completion: {
+                    let vc = self.storyboard!.instantiateViewController(withIdentifier: "CalenderController")
+                    vc.modalPresentationStyle = .fullScreen
+                    pvc?.present(vc, animated: true)
+                })
+
+                
             case "Basket":
-                let vc = storyboard!.instantiateViewController(withIdentifier: "BasketController")
+            self.dismiss(animated: false, completion: {
+                let vc = self.storyboard!.instantiateViewController(withIdentifier: "BasketController")
                 vc.modalPresentationStyle = .fullScreen
-                self.dismiss(animated: true)
-                self.present(vc, animated: true)
-            
+                pvc?.present(vc, animated: true)
+            })
+
             default: break;
         }
     }
