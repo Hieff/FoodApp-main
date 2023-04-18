@@ -44,7 +44,7 @@
                                 <accessibility key="accessibilityConfiguration" identifier="suggestionImage"/>
                             </imageView>
                             <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ban-c8-sn9">
-                                <rect key="frame" x="-2" y="760" width="390" height="50"/>
+                                <rect key="frame" x="-2" y="760" width="389" height="50"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
@@ -127,6 +127,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="13n-PJ-3WG"/>
                     <connections>
+                        <outlet property="searchBarField" destination="vr7-5E-PUo" id="s8D-uF-MJ4"/>
                         <outlet property="searchTable" destination="24h-gU-jcD" id="keR-PQ-yXY"/>
                         <segue destination="v93-pw-CuA" kind="show" identifier="toRecipeDisplay" id="x4u-TL-LyH"/>
                     </connections>

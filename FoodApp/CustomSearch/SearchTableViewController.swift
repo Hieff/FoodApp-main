@@ -13,11 +13,14 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
     var searchInput: String = ""
     var mealManager: FetchedMealManager? = nil
     var selectedMeal: MealDb.Meals? = nil
-
+    
+    @IBOutlet weak var searchBarField: UITextField!
+    
     @IBOutlet weak var searchTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBarField.addTarget(self, action: #selector(onSearch), for: .editingDidEndOnExit)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -28,6 +31,12 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    @objc func onSearch() {
+        searchInput = searchBarField.text!
+        searchTable.reloadData()
+    }
+    
 
     // MARK: - Table view data source
     
