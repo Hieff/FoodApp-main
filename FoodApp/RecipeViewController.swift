@@ -91,16 +91,6 @@ class RecipeViewController: UIViewController {
     }
     
 
-
-    
-    @IBOutlet weak var recipeImage: UIImageView!
-    @IBOutlet weak var starButton: UIButton!
-    @IBOutlet weak var titleText: UILabel!
-    @IBOutlet weak var timeText: UILabel!
-    @IBOutlet weak var calorieText: UILabel!
-    @IBOutlet weak var instructionText: UITextView!
-    
-    
     /*
      // MARK: - Navigation
 
