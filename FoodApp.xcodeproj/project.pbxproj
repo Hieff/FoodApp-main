@@ -24,6 +24,9 @@
 		01F5243329EE239800BF31DF /* ImageFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5243229EE239800BF31DF /* ImageFinder.swift */; };
 		2C1CB05029ED6664005ED07F /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */; };
 		2CB6926929EEB179001D568A /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6926829EEB179001D568A /* IngredientsViewController.swift */; };
+		2CB6926C29EED4C4001D568A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6926B29EED4C4001D568A /* CalendarViewController.swift */; };
+		2CB6927029EED50B001D568A /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6926E29EED50B001D568A /* CalendarTableViewCell.swift */; };
+		2CB6927129EED50B001D568A /* CalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CB6926F29EED50B001D568A /* CalendarTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		01F5243229EE239800BF31DF /* ImageFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFinder.swift; sourceTree = "<group>"; };
 		2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		2CB6926829EEB179001D568A /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
+		2CB6926B29EED4C4001D568A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		2CB6926E29EED50B001D568A /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		2CB6926F29EED50B001D568A /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,11 +93,12 @@
 				018F3CFA29B5EB3C003547F1 /* ViewController.swift */,
 				018F3CFC29B5EB3C003547F1 /* Main.storyboard */,
 				018F3D0229B5EB41003547F1 /* Assets.xcassets */,
-				018F3D0429B5EB41003547F1 /* LaunchScreen.storyboard */,
 				018F3D0729B5EB41003547F1 /* Info.plist */,
 				018F3CFF29B5EB3C003547F1 /* FoodApp.xcdatamodeld */,
 				2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */,
 				2CB6926829EEB179001D568A /* IngredientsViewController.swift */,
+				018F3D0429B5EB41003547F1 /* LaunchScreen.storyboard */,
+				2CB6926D29EED4CC001D568A /* CalenderView */,
 			);
 			path = FoodApp;
 			sourceTree = "<group>";
@@ -130,6 +137,16 @@
 				01F5243229EE239800BF31DF /* ImageFinder.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2CB6926D29EED4CC001D568A /* CalenderView */ = {
+			isa = PBXGroup;
+			children = (
+				2CB6926B29EED4C4001D568A /* CalendarViewController.swift */,
+				2CB6926E29EED50B001D568A /* CalendarTableViewCell.swift */,
+				2CB6926F29EED50B001D568A /* CalendarTableViewCell.xib */,
+			);
+			path = CalenderView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +209,7 @@
 			files = (
 				018F3D0629B5EB41003547F1 /* LaunchScreen.storyboard in Resources */,
 				018F3D0329B5EB41003547F1 /* Assets.xcassets in Resources */,
+				2CB6927129EED50B001D568A /* CalendarTableViewCell.xib in Resources */,
 				01F5243029EE137500BF31DF /* SearchCell.xib in Resources */,
 				018F3CFE29B5EB3C003547F1 /* Main.storyboard in Resources */,
 			);
@@ -212,10 +230,12 @@
 				018F3CF729B5EB3C003547F1 /* AppDelegate.swift in Sources */,
 				018F3CF929B5EB3C003547F1 /* SceneDelegate.swift in Sources */,
 				01F5242B29EDAAAF00BF31DF /* FatSecret.swift in Sources */,
+				2CB6927029EED50B001D568A /* CalendarTableViewCell.swift in Sources */,
 				01F5243329EE239800BF31DF /* ImageFinder.swift in Sources */,
 				2C1CB05029ED6664005ED07F /* RecipeViewController.swift in Sources */,
 				01F5241F29D4F6FE00BF31DF /* MealDb.swift in Sources */,
 				01F5241C29D348D900BF31DF /* SearchTableViewController.swift in Sources */,
+				2CB6926C29EED4C4001D568A /* CalendarViewController.swift in Sources */,
 				01F5242129D5976800BF31DF /* FetchedMealManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

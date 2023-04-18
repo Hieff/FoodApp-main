@@ -8,7 +8,7 @@
 import UIKit
 
 
-class SearchTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class SearchTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate{
     
     var searchInput: String = ""
     var mealManager: FetchedMealManager? = nil
@@ -35,6 +35,22 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
     @objc func onSearch() {
         searchInput = searchBarField.text!
         searchTable.reloadData()
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        let title = item.title
+        if(title == "Home"){
+            let vc = storyboard!.instantiateViewController(withIdentifier: "HomeController")
+            vc.modalPresentationStyle = .fullScreen
+            self.dismiss(animated: false)
+            self.present(vc, animated: true)
+        }
+        if(title == "Calendar"){
+            let vc = storyboard!.instantiateViewController(withIdentifier: "CalenderController")
+            vc.modalPresentationStyle = .fullScreen
+            self.dismiss(animated: false)
+            self.present(vc, animated: true)
+        }
     }
     
 
