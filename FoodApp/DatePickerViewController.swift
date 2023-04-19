@@ -42,30 +42,41 @@ class DatePickerViewController: UIViewController {
         hourFormatter.dateFormat = "HH"
         
         let time = timePicked.date
-        let cookingTime = selectedMeal?.cookingTime() ?? 0
-        let startTime = time.addingTimeInterval((cookingTime * -60))
-        print(startTime)
-        
-        var newStartTime = minuteFormatter.string(from: startTime)
-        let roundingCheck = (Int(newStartTime) ?? 0) / 30
-        
-        print(newStartTime)
-        print(roundingCheck)
-        if(roundingCheck >= 1){
-            newStartTime = "30"
+        if((finishTimes as! [String]).contains(dateFormatter.string(from: time)) || (startTimes as! [String]).contains(dateFormatter.string(from: time))){
+            guideText.text = "Time already taken."
         } else {
-            newStartTime = "00"
+            let cookingTime = selectedMeal?.cookingTime() ?? 0
+            let startTime = time.addingTimeInterval((cookingTime * -60))
+            print(startTime)
+            
+            var newStartTime = minuteFormatter.string(from: startTime)
+            let roundingCheck = (Int(newStartTime) ?? 0) / 30
+            
+            print(newStartTime)
+            print(roundingCheck)
+            if(roundingCheck >= 1){
+                newStartTime = "30"
+            } else {
+                newStartTime = "00"
+            }
+            let updatedStartTime = hourFormatter.string(from: startTime) + ":" + newStartTime
+            
+            if(startTimes as! [String]).contains(updatedStartTime) || (finishTimes as! [String]).contains(updatedStartTime){
+                guideText.text = "Start time already taken. Try another time or clear your calendar."
+            } else {
+                finishTimes.append(dateFormatter.string(from: time))
+                recipeNames.append(selectedMeal?.strMeal ?? "no name")
+                startTimes.append(updatedStartTime)
+                
+                UserDefaults.standard.set(finishTimes, forKey: "finish")
+                UserDefaults.standard.set(recipeNames, forKey: "recipeName")
+                UserDefaults.standard.set(startTimes, forKey: "start")
+                guideText.text = "Time picked"
+            }
+            
+            
         }
-        let updatedStartTime = hourFormatter.string(from: startTime) + ":" + newStartTime
-        
-        finishTimes.append(dateFormatter.string(from: time))
-        recipeNames.append(selectedMeal?.strMeal ?? "no name")
-        startTimes.append(updatedStartTime)
-        
-        UserDefaults.standard.set(finishTimes, forKey: "finish")
-        UserDefaults.standard.set(recipeNames, forKey: "recipeName")
-        UserDefaults.standard.set(startTimes, forKey: "start")
-        guideText.text = "Time picked"
+       
         
         
     }

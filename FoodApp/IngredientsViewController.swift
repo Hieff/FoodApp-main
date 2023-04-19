@@ -102,7 +102,6 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func addToBasketButton(_ sender: Any) {
         var basket = UserDefaults.standard.array(forKey: "basket") ?? []
-        print(ingredientsList)
         for x in ingredientsList{
                 basket.append(x)
         }
