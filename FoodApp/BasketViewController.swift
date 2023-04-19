@@ -15,6 +15,19 @@ class BasketViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
         return basket.count
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        basket.remove(at: indexPath.row)
+        UserDefaults.standard.set(basket, forKey: "basket")
+        basketTable.reloadData()
+    }
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "basketCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
@@ -53,7 +66,21 @@ class BasketViewController: UIViewController, UITabBarDelegate, UITableViewDeleg
     }
     
 
+    @IBAction func emptyBasketButton(_ sender: Any) {
+        UserDefaults.standard.set([], forKey: "basket")
+        basket = UserDefaults.standard.array(forKey: "basket") ?? []
+        basketTable.reloadData()
+        basketDisplayImage.image = UIImage(systemName: "basket.fill")
+        basketDisplayImage.tintColor = UIColor.red
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.basketDisplayImage.image = nil
+        }
+        
+        
+    }
     @IBOutlet weak var basketTable: UITableView!
+    
+    @IBOutlet weak var basketDisplayImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

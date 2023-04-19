@@ -68,7 +68,7 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchCell
         let meal = mealManager!.getMealsBySearch(name: searchInput)[indexPath.row]
-        
+        print(mealManager!.getMealsBySearch(name: searchInput).count)
         cell.titleLabel.text = meal.strMeal
         cell.timeLabel.text = "Time: ~" + String(meal.cookingTime()) + " minutes"
         if let imgSource = meal.strMealThumb {

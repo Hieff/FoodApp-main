@@ -74,7 +74,8 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
     func filterNils(list: [String]) -> [String]{
         var newList = [String]()
         for x in list {
-            if x != "none"{
+            if x == "none" || x == ""{
+            } else {
                 newList.append(String(x))
             }
         }
@@ -101,6 +102,7 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func addToBasketButton(_ sender: Any) {
         var basket = UserDefaults.standard.array(forKey: "basket") ?? []
+        print(ingredientsList)
         for x in ingredientsList{
                 basket.append(x)
         }

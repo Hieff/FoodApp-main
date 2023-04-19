@@ -33,6 +33,34 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         return 50.0
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        let cell = calendarTable.cellForRow(at: indexPath) as! CalendarTableViewCell
+        if cell.informationText.text! != ""{
+            return .delete
+        } else {
+            return .none
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let cell = calendarTable.cellForRow(at: indexPath) as! CalendarTableViewCell
+        if editingStyle == .delete{
+            var x = 0
+            while x < recipeNames.count {
+                if cell.informationText.text!.contains(recipeNames[x] as! String){
+                    recipeNames.remove(at: x)
+                    startTimes.remove(at: x)
+                    finishTimes.remove(at: x)
+                    UserDefaults.standard.set(finishTimes, forKey: "finish")
+                    UserDefaults.standard.set(recipeNames, forKey: "recipeName")
+                    UserDefaults.standard.set(startTimes, forKey: "start")
+                }
+                x += 1
+            }
+            calendarTable.reloadData()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath) as! CalendarTableViewCell
         let time = indexPath.row * 30
