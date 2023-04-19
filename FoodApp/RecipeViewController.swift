@@ -24,8 +24,7 @@ class RecipeViewController: UIViewController {
         // Do any additional setup after loading the view.
         titleText.text = selectedRecipe?.strMeal ?? "no title"
         instructionText.text = selectedRecipe?.strInstructions ?? "no instruction"
-        print(selectedRecipe?.strMealThumb ?? "none")
-    
+
         if let imgSource = selectedRecipe?.strMealThumb {
             ImageFinder().fetch(imgSource) { img in
                 DispatchQueue.main.async {
@@ -37,6 +36,13 @@ class RecipeViewController: UIViewController {
     }
 
     
+    @IBAction func addToCalendarButton(_ sender: Any) {
+        performSegue(withIdentifier: "toDate", sender: nil)
+    }
+    
+    
+    
+    
     @IBAction func showIngredientsButton(_ sender: Any) {
         performSegue(withIdentifier: "toIngredients", sender: nil)
     }
@@ -45,6 +51,10 @@ class RecipeViewController: UIViewController {
         if (segue.identifier == "toIngredients"){
             let ingredientViewController = segue.destination as! IngredientsViewController
             ingredientViewController.selectedRecipe = selectedRecipe
+        }
+        if (segue.identifier == "toDate"){
+            let dateViewController = segue.destination as! DatePickerViewController
+            dateViewController.selectedMeal = selectedRecipe
         }
     }
     

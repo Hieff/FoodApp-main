@@ -38,7 +38,7 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @objc func onSearch() {
-        searchInput = searchBarField.text!
+        searchInput = searchBarField.text ?? ""
         searchTable.reloadData()
     }
     // MARK: - Table view data source

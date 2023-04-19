@@ -13,7 +13,8 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var ingredientsTable: UITableView!
     var ingredientsList = [String]()
     var measurementList = [String]()
-    var combinedList = [String]()
+    @IBOutlet weak var notificationImage: UIImageView!
+    @IBOutlet weak var notificationText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,9 +102,18 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func addToBasketButton(_ sender: Any) {
         var basket = UserDefaults.standard.array(forKey: "basket") ?? []
         for x in ingredientsList{
-            basket.append(x)
+                basket.append(x)
         }
         UserDefaults.standard.set(basket, forKey: "basket")
+        notificationImage.image = UIImage(systemName: "basket.fill")
+        notificationImage.tintColor = UIColor.green
+        notificationText.text = "Added to Basket"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.notificationText.text = ""
+            self.notificationImage.image = nil
+            
+        }
+        
         
     }
     

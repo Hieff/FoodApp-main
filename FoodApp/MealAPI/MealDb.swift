@@ -74,14 +74,14 @@ struct MealDb: Decodable {
             var x = 0
             
             while x < instructionsArray.count{
-                if(instructionsArray[x].lowercased().contains("minutes") || instructionsArray[x].lowercased().contains("min")){
+                if(instructionsArray[x].lowercased().contains("minutes") || instructionsArray[x].lowercased().contains("min") && x > 1){
                     if(instructionsArray[x-1].contains("-")){
                         timeCounter += removingDash(input: instructionsArray[x-1])
                     } else {
                         timeCounter += Int(instructionsArray[x-1]) ?? 0
                     }
                 }
-                if(instructionsArray[x].lowercased().contains("seconds") || instructionsArray[x].lowercased().contains("sec")){
+                if(instructionsArray[x].lowercased().contains("seconds") || instructionsArray[x].lowercased().contains("sec") && x > 1){
                     if(instructionsArray[x-1].contains("-")){
                         timeCounter += removingDash(input: instructionsArray[x-1])
                     } else {
@@ -89,7 +89,7 @@ struct MealDb: Decodable {
                     }
                     
                 }
-                if(instructionsArray[x].lowercased().contains("hours") || instructionsArray[x].lowercased().contains("hr")){
+                if(instructionsArray[x].lowercased().contains("hours") || instructionsArray[x].lowercased().contains("hr") && x > 1){
                     if(instructionsArray[x-1].contains("-")){
                         timeCounter += removingDash(input: instructionsArray[x-1])
                     } else {
