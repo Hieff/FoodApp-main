@@ -14,6 +14,8 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
     var mealManager: FetchedMealManager? = nil
     var selectedMeal: MealDb.Meals? = nil
     var homeController: UIViewController?
+    var searchType: String = ""
+    var searchedMeals = [MealDb.Meals]()
     
     @IBOutlet weak var searchBarField: UITextField!
     
@@ -38,6 +40,7 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @objc func onSearch() {
+        searchType = "recipes"
         searchInput = searchBarField.text ?? ""
         searchTable.reloadData()
     }
@@ -59,7 +62,7 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if isEmpty() {
+        if isEmpty() && searchedMeals.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
             var content = cell.defaultContentConfiguration()
             content.text = "No items found! Try again."
@@ -67,11 +70,16 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchCell
-        let meal = mealManager!.getMealsBySearch(name: searchInput)[indexPath.row]
-        print(mealManager!.getMealsBySearch(name: searchInput).count)
-        cell.titleLabel.text = meal.strMeal
-        cell.timeLabel.text = "Time: ~" + String(meal.cookingTime()) + " minutes"
-        if let imgSource = meal.strMealThumb {
+        var meal: MealDb.Meals? = nil
+        if searchType == "recipe"{
+             meal = mealManager!.getMealsBySearch(name: searchInput)[indexPath.row]
+        } else {
+             meal = searchedMeals[indexPath.row]
+        }
+        
+        cell.titleLabel.text = meal?.strMeal ?? "no meal"
+        cell.timeLabel.text = "Time: ~" + String(meal?.cookingTime() ?? 0) + " minutes"
+        if let imgSource = meal?.strMealThumb {
             ImageFinder().fetch(imgSource) { img in
                 DispatchQueue.main.async {
                     cell.imgView.image = img
@@ -83,10 +91,15 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if isEmpty() {
+        if isEmpty() && searchedMeals.count == 0 {
             return
         }
-        selectedMeal = mealManager!.searchedMeals[indexPath.row]
+        if(searchedMeals.count == 0){
+            selectedMeal = mealManager!.searchedMeals[indexPath.row]
+        } else {
+            selectedMeal = searchedMeals[indexPath.row]
+        }
+        
         performSegue(withIdentifier: "toRecipeDisplay", sender: nil)
     }
     

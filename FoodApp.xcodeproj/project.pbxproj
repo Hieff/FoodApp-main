@@ -23,6 +23,7 @@
 		01F5243029EE137500BF31DF /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F5242E29EE137500BF31DF /* SearchCell.xib */; };
 		01F5243329EE239800BF31DF /* ImageFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5243229EE239800BF31DF /* ImageFinder.swift */; };
 		2C1CB05029ED6664005ED07F /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */; };
+		2C2FDF0E29F03F6000755D80 /* IngredientSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2FDF0D29F03F6000755D80 /* IngredientSearchViewController.swift */; };
 		2C6F706629F0123900A8BF43 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6F706529F0123900A8BF43 /* DatePickerViewController.swift */; };
 		2CB6926929EEB179001D568A /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6926829EEB179001D568A /* IngredientsViewController.swift */; };
 		2CB6926C29EED4C4001D568A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6926B29EED4C4001D568A /* CalendarViewController.swift */; };
@@ -51,6 +52,7 @@
 		01F5242E29EE137500BF31DF /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		01F5243229EE239800BF31DF /* ImageFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFinder.swift; sourceTree = "<group>"; };
 		2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		2C2FDF0D29F03F6000755D80 /* IngredientSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientSearchViewController.swift; sourceTree = "<group>"; };
 		2C6F706529F0123900A8BF43 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		2CB6926829EEB179001D568A /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
 		2CB6926B29EED4C4001D568A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				018F3CF829B5EB3C003547F1 /* SceneDelegate.swift */,
 				018F3CFA29B5EB3C003547F1 /* ViewController.swift */,
 				018F3CFC29B5EB3C003547F1 /* Main.storyboard */,
+				2C2FDF0D29F03F6000755D80 /* IngredientSearchViewController.swift */,
 				2CB6927429EEEBE4001D568A /* BasketViewController.swift */,
 				018F3D0229B5EB41003547F1 /* Assets.xcassets */,
 				2C6F706529F0123900A8BF43 /* DatePickerViewController.swift */,
@@ -253,6 +256,7 @@
 				01F5243329EE239800BF31DF /* ImageFinder.swift in Sources */,
 				2C1CB05029ED6664005ED07F /* RecipeViewController.swift in Sources */,
 				01F5241F29D4F6FE00BF31DF /* MealDb.swift in Sources */,
+				2C2FDF0E29F03F6000755D80 /* IngredientSearchViewController.swift in Sources */,
 				5418DA4C29EEDEB500B5C391 /* UserProfile.swift in Sources */,
 				01F5241C29D348D900BF31DF /* SearchTableViewController.swift in Sources */,
 				2CB6926C29EED4C4001D568A /* CalendarViewController.swift in Sources */,

@@ -51,12 +51,20 @@ class ViewController: UIViewController, UITabBarDelegate {
         }
     }
     
+    @IBAction func toIngredientSearchFunction(_ sender: Any) {
+        performSegue(withIdentifier: "toIngredientSearch", sender: nil)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SearchScene" {
             let sceneSearchView = segue.destination as? SearchTableViewController
             sceneSearchView?.searchInput = searchBarField.text!
             sceneSearchView?.mealManager = self.mealManager
             sceneSearchView?.homeController = self
+        }
+        
+        if segue.identifier == "toIngredientSearch"{
+            let ingredientSearchController = segue.destination as? IngredientSearchViewController
+            ingredientSearchController?.mealManager = self.mealManager
         }
     }
 }
