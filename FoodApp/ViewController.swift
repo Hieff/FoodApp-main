@@ -11,6 +11,12 @@ class ViewController: UIViewController, UITabBarDelegate {
 
     @IBOutlet weak var searchBarField: UITextField!
     
+    @IBOutlet weak var recentImage: UIImageView!
+    @IBOutlet weak var recentText: UILabel!
+    
+    
+    
+    
     let mealManager: FetchedMealManager = FetchedMealManager()
     let fatSecretManager: FatSecretManager = FatSecretManager()
     
@@ -18,6 +24,27 @@ class ViewController: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         searchBarField.addTarget(self, action: #selector(onSearch), for: .editingDidEndOnExit)
+
+        
+      
+    
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let imageToShow = UserDefaults.standard.string(forKey: "recentImage") ?? ""
+        let imageName = UserDefaults.standard.string(forKey: "recentName") ?? ""
+        if(imageName != ""){
+            recentText.text = imageName
+            if imageToShow != ""  {
+                print("finding")
+                ImageFinder().fetch(imageToShow) { img in
+                    DispatchQueue.main.async {
+                        self.recentImage.image = img;
+                    }
+                }
+            }
+        }
     }
     
     @objc func onSearch() {

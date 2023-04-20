@@ -28,7 +28,8 @@ class RecipeViewController: UIViewController {
         // Do any additional setup after loading the view.
         reviews = UserDefaults.standard.array(forKey: "reviews") ?? []
         reviewRatings = UserDefaults.standard.array(forKey: "ratings") ?? []
-        print(reviews); print(reviewRatings)
+        UserDefaults.standard.set(selectedRecipe?.strMeal, forKey: "recentName")
+        UserDefaults.standard.set(selectedRecipe?.strMealThumb, forKey: "recentImage")
         
         buidReviewButton()
         titleText.text = selectedRecipe?.strMeal ?? "no title"
