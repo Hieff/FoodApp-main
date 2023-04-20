@@ -35,6 +35,8 @@ class ViewController: UIViewController, UITabBarDelegate {
                 let controller = vc as! SearchTableViewController
                 controller.mealManager = mealManager
                 controller.searchInput = ""
+                controller.searchType = .recipe
+                controller.homeController = self
                 self.present(vc, animated: true)
             
             case "Calendar":
@@ -60,6 +62,7 @@ class ViewController: UIViewController, UITabBarDelegate {
             sceneSearchView?.searchInput = searchBarField.text!
             sceneSearchView?.mealManager = self.mealManager
             sceneSearchView?.homeController = self
+            sceneSearchView?.searchType = .recipe
         }
         
         if segue.identifier == "toIngredientSearch"{

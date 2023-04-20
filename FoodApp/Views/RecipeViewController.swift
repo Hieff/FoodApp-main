@@ -40,9 +40,6 @@ class RecipeViewController: UIViewController {
         performSegue(withIdentifier: "toDate", sender: nil)
     }
     
-    
-    
-    
     @IBAction func showIngredientsButton(_ sender: Any) {
         performSegue(withIdentifier: "toIngredients", sender: nil)
     }

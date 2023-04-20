@@ -7,8 +7,10 @@
 
 import Foundation
 import UIKit
+
+
 class FetchedMealManager {
-    
+        
     var listOfMeals: [String: MealDb.Meals] = [:]
     var searchedMeals: [MealDb.Meals] = []
     

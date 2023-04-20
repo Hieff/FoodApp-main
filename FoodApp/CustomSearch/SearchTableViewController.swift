@@ -10,39 +10,41 @@ import UIKit
 
 class SearchTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
     
-    var searchInput: String = ""
     var mealManager: FetchedMealManager? = nil
-    var selectedMeal: MealDb.Meals? = nil
     var homeController: UIViewController?
-    var searchType: String = ""
+    
+    var selectedMeal: MealDb.Meals? = nil
+    var searchInput: String = ""
+    var searchType: SearchType = SearchType.recipe
     var searchedMeals = [MealDb.Meals]()
     
     @IBOutlet weak var searchBarField: UITextField!
-    
     @IBOutlet weak var searchTable: UITableView!
-    
     @IBOutlet weak var homeItem: UITabBarItem!
+    @IBOutlet weak var noSearchResultImg: UIImageView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
         
         searchBarField.addTarget(self, action: #selector(onSearch), for: .editingDidEndOnExit)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         // Register custom table cell
         searchTable.register(UINib(nibName: "SearchCell", bundle: nil), forCellReuseIdentifier: "searchCell")
         
-        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     @objc func onSearch() {
-        searchType = "recipes"
+        searchType = .recipe
         searchInput = searchBarField.text ?? ""
-        searchTable.reloadData()
+        DispatchQueue.main.async {
+            self.searchTable.reloadData()
+            self.searchTable.register(UINib(nibName: "SearchCell", bundle: nil), forCellReuseIdentifier: "searchCell")
+        }
     }
     // MARK: - Table view data source
     
@@ -57,24 +59,28 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return (mealManager!.getMealsBySearch(name: searchInput).count == 0 ? 1 : mealManager!.getMealsBySearch(name: searchInput).count)
+        if searchType == .recipe {
+            let empty = mealManager!.getMealsBySearch(name: searchInput).count == 0
+            if empty {
+                noSearchResultImg.isHidden = false
+                tableView.isHidden = true
+                return 0
+            }
+            noSearchResultImg.isHidden = true
+            tableView.isHidden = false
+            return mealManager!.getMealsBySearch(name: searchInput).count
+        }
+        return (searchedMeals.count == 0 ? 0 : searchedMeals.count)
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if isEmpty() && searchedMeals.count == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
-            var content = cell.defaultContentConfiguration()
-            content.text = "No items found! Try again."
-            cell.contentConfiguration = content
-            return cell
-        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchCell
         var meal: MealDb.Meals? = nil
-        if searchType == "recipe"{
-             meal = mealManager!.getMealsBySearch(name: searchInput)[indexPath.row]
+        if searchType == .recipe {
+            meal = mealManager!.getMealsBySearch(name: searchInput)[indexPath.row]
         } else {
-             meal = searchedMeals[indexPath.row]
+            meal = searchedMeals[indexPath.row]
         }
         
         cell.titleLabel.text = meal?.strMeal ?? "no meal"
@@ -86,12 +92,12 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
                 }
             }
         }
-                
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if isEmpty() && searchedMeals.count == 0 {
+        if isEmpty() {
             return
         }
         if(searchedMeals.count == 0){
@@ -112,8 +118,12 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func isEmpty() -> Bool {
-        if let meal = mealManager {
-            return meal.getMealsBySearch(name: searchInput).count == 0;
+        if searchType == .recipe {
+            if let meal = mealManager {
+                return meal.getMealsBySearch(name: searchInput).count == 0
+            }
+        } else {
+            return searchedMeals.count == 0
         }
         return false
     }

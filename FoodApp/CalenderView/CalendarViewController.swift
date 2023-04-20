@@ -114,6 +114,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
                     let vc = self.storyboard!.instantiateViewController(withIdentifier: "SearchController")
                     let controller = vc as! SearchTableViewController
                     controller.mealManager = FetchedMealManager()
+                    controller.searchType = .recipe
                     controller.searchInput = ""
                     vc.modalPresentationStyle = .fullScreen
                     pvc?.present(vc, animated: true)

@@ -10,17 +10,17 @@ import UIKit
 class IngredientsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var selectedRecipe: MealDb.Meals? = nil
-    @IBOutlet weak var ingredientsTable: UITableView!
     var ingredientsList = [String]()
     var measurementList = [String]()
+    
+    @IBOutlet weak var ingredientsTable: UITableView!
     @IBOutlet weak var notificationImage: UIImageView!
     @IBOutlet weak var notificationText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
-        
+
         let measurement1 = selectedRecipe?.strMeasure1 ?? "none"
         let measurement2 = selectedRecipe?.strMeasure2 ?? "none"
         let measurement3 = selectedRecipe?.strMeasure3 ?? "none"
@@ -86,16 +86,15 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
                 basket.append(x)
         }
         UserDefaults.standard.set(basket, forKey: "basket")
+        
         notificationImage.image = UIImage(systemName: "basket.fill")
         notificationImage.tintColor = UIColor.green
         notificationText.text = "Added to Basket"
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.notificationText.text = ""
             self.notificationImage.image = nil
-            
         }
-        
-        
     }
     
     

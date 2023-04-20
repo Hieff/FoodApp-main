@@ -37,9 +37,6 @@ class IngredientSearchViewController: UIViewController, UITableViewDelegate, UIT
         inputtedIngredients.remove(at: indexPath.row)
         ingredientSearchTable.reloadData()
     }
-
-    
-   
     
     @objc func addItem(){
         let inputtedText = inputField.text ?? ""
@@ -47,7 +44,6 @@ class IngredientSearchViewController: UIViewController, UITableViewDelegate, UIT
             inputtedIngredients.append(inputtedText)
             ingredientSearchTable.reloadData()
         }
-        
     }
     
     
@@ -73,11 +69,9 @@ class IngredientSearchViewController: UIViewController, UITableViewDelegate, UIT
     func filterMatches(input: [(MealDb.Meals, Int)]) -> [MealDb.Meals]{
         var meals = [MealDb.Meals]()
         let sortedTuples = input.sorted(by: {$0.1 > $1.1})
-        
         for (meal,_) in sortedTuples{
             meals.append(meal)
         }
-        
         return meals
         
     }
@@ -105,8 +99,6 @@ class IngredientSearchViewController: UIViewController, UITableViewDelegate, UIT
         if sendSearch.count != 0 {
             performSegue(withIdentifier: "ingredientSearchToSearch", sender: nil)
         }
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -114,7 +106,7 @@ class IngredientSearchViewController: UIViewController, UITableViewDelegate, UIT
         if segue.identifier == "ingredientSearchToSearch"{
             let searchViewController = segue.destination as! SearchTableViewController
             searchViewController.mealManager = FetchedMealManager()
-            searchViewController.searchType = "ingredients"
+            searchViewController.searchType = .ingredient
             searchViewController.searchedMeals = sendSearch
             searchViewController.searchInput = ""
             

@@ -14,6 +14,7 @@
 		018F3D0129B5EB3C003547F1 /* FoodApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 018F3CFF29B5EB3C003547F1 /* FoodApp.xcdatamodeld */; };
 		018F3D0329B5EB41003547F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 018F3D0229B5EB41003547F1 /* Assets.xcassets */; };
 		018F3D0629B5EB41003547F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018F3D0429B5EB41003547F1 /* LaunchScreen.storyboard */; };
+		01D7348429F091DF0064732C /* SearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7348329F091DF0064732C /* SearchType.swift */; };
 		01F5241C29D348D900BF31DF /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5241B29D348D900BF31DF /* SearchTableViewController.swift */; };
 		01F5241F29D4F6FE00BF31DF /* MealDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5241E29D4F6FE00BF31DF /* MealDb.swift */; };
 		01F5242129D5976800BF31DF /* FetchedMealManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5242029D5976800BF31DF /* FetchedMealManager.swift */; };
@@ -43,6 +44,7 @@
 		018F3D0229B5EB41003547F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		018F3D0529B5EB41003547F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		018F3D0729B5EB41003547F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01D7348329F091DF0064732C /* SearchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchType.swift; sourceTree = "<group>"; };
 		01F5241B29D348D900BF31DF /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		01F5241E29D4F6FE00BF31DF /* MealDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDb.swift; sourceTree = "<group>"; };
 		01F5242029D5976800BF31DF /* FetchedMealManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedMealManager.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 		018F3CF529B5EB3C003547F1 /* FoodApp */ = {
 			isa = PBXGroup;
 			children = (
+				01D7348529F0C9DA0064732C /* Views */,
 				5418DA4A29EEDEA100B5C391 /* UserProfile */,
 				01F5243129EE237700BF31DF /* Extensions */,
 				01F5242C29EE0E1D00BF31DF /* CustomSearch */,
@@ -99,20 +102,42 @@
 				01F5241D29D4F6BB00BF31DF /* MealAPI */,
 				018F3CF629B5EB3C003547F1 /* AppDelegate.swift */,
 				018F3CF829B5EB3C003547F1 /* SceneDelegate.swift */,
-				018F3CFA29B5EB3C003547F1 /* ViewController.swift */,
 				018F3CFC29B5EB3C003547F1 /* Main.storyboard */,
-				2C2FDF0D29F03F6000755D80 /* IngredientSearchViewController.swift */,
-				2CB6927429EEEBE4001D568A /* BasketViewController.swift */,
+				018F3CFA29B5EB3C003547F1 /* ViewController.swift */,
 				018F3D0229B5EB41003547F1 /* Assets.xcassets */,
-				2C6F706529F0123900A8BF43 /* DatePickerViewController.swift */,
 				018F3D0729B5EB41003547F1 /* Info.plist */,
 				018F3CFF29B5EB3C003547F1 /* FoodApp.xcdatamodeld */,
-				2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */,
-				2CB6926829EEB179001D568A /* IngredientsViewController.swift */,
 				018F3D0429B5EB41003547F1 /* LaunchScreen.storyboard */,
 				2CB6926D29EED4CC001D568A /* CalenderView */,
 			);
 			path = FoodApp;
+			sourceTree = "<group>";
+		};
+		01D7347F29F08C330064732C /* IngredientView */ = {
+			isa = PBXGroup;
+			children = (
+				2CB6926829EEB179001D568A /* IngredientsViewController.swift */,
+				2C2FDF0D29F03F6000755D80 /* IngredientSearchViewController.swift */,
+			);
+			path = IngredientView;
+			sourceTree = "<group>";
+		};
+		01D7348229F091D30064732C /* SearchType */ = {
+			isa = PBXGroup;
+			children = (
+				01D7348329F091DF0064732C /* SearchType.swift */,
+			);
+			path = SearchType;
+			sourceTree = "<group>";
+		};
+		01D7348529F0C9DA0064732C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2C1CB04F29ED6664005ED07F /* RecipeViewController.swift */,
+				2CB6927429EEEBE4001D568A /* BasketViewController.swift */,
+				2C6F706529F0123900A8BF43 /* DatePickerViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		01F5241D29D4F6BB00BF31DF /* MealAPI */ = {
@@ -136,6 +161,8 @@
 		01F5242C29EE0E1D00BF31DF /* CustomSearch */ = {
 			isa = PBXGroup;
 			children = (
+				01D7348229F091D30064732C /* SearchType */,
+				01D7347F29F08C330064732C /* IngredientView */,
 				01F5241B29D348D900BF31DF /* SearchTableViewController.swift */,
 				01F5242D29EE137500BF31DF /* SearchCell.swift */,
 				01F5242E29EE137500BF31DF /* SearchCell.xib */,
@@ -249,6 +276,7 @@
 				01F5242929EDAA8200BF31DF /* FatSecretManager.swift in Sources */,
 				01F5242F29EE137500BF31DF /* SearchCell.swift in Sources */,
 				018F3D0129B5EB3C003547F1 /* FoodApp.xcdatamodeld in Sources */,
+				01D7348429F091DF0064732C /* SearchType.swift in Sources */,
 				018F3CF729B5EB3C003547F1 /* AppDelegate.swift in Sources */,
 				018F3CF929B5EB3C003547F1 /* SceneDelegate.swift in Sources */,
 				01F5242B29EDAAAF00BF31DF /* FatSecret.swift in Sources */,
