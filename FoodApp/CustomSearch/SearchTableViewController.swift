@@ -17,6 +17,7 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
     var searchInput: String = ""
     var searchType: SearchType = SearchType.recipe
     var searchedMeals = [MealDb.Meals]()
+    var category = ""
     
     @IBOutlet weak var searchBarField: UITextField!
     @IBOutlet weak var searchTable: UITableView!
@@ -31,6 +32,7 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
         searchBarField.addTarget(self, action: #selector(onSearch), for: .editingDidEndOnExit)
         // Register custom table cell
         searchTable.register(UINib(nibName: "SearchCell", bundle: nil), forCellReuseIdentifier: "searchCell")
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

@@ -180,6 +180,14 @@
                                 <rect key="frame" x="209" y="416" width="165" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aP3-CT-cRn">
+                                <rect key="frame" x="16" y="622" width="159" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ksd-6E-fv1">
+                                <rect key="frame" x="209" y="622" width="165" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sSq-yD-7mR">
                                 <rect key="frame" x="20" y="175" width="145" height="141"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -190,6 +198,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="categoryOne" destination="aP3-CT-cRn" id="iIb-Xx-pLl"/>
+                        <outlet property="categoryTwo" destination="ksd-6E-fv1" id="v0c-op-P23"/>
                         <outlet property="recentImage" destination="sSq-yD-7mR" id="aSl-7J-FLH"/>
                         <outlet property="recentText" destination="66y-hN-tEJ" id="EEL-yT-dMG"/>
                         <outlet property="searchBarField" destination="FoZ-Y3-1eX" id="DnD-8y-v77"/>
@@ -197,11 +207,12 @@
                         <outlet property="suggestionTwo" destination="YYB-aI-dzV" id="dnq-2P-fui"/>
                         <segue destination="ch2-01-4iQ" kind="show" identifier="SearchScene" id="9zd-VV-9FX"/>
                         <segue destination="v93-pw-CuA" kind="presentation" identifier="mainToRecipe" modalPresentationStyle="fullScreen" id="fjH-hd-ueN"/>
+                        <segue destination="ch2-01-4iQ" kind="presentation" identifier="categorySearch" id="X2O-wW-jMV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-120" y="-152"/>
+            <point key="canvasLocation" x="-120" y="-152.13270142180093"/>
         </scene>
         <!--SearchScene-->
         <scene sceneID="sAb-GV-Kpp">
@@ -631,7 +642,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="fjH-hd-ueN"/>
-        <segue reference="9zd-VV-9FX"/>
+        <segue reference="X2O-wW-jMV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="No-Results" width="237.33332824707031" height="304.66665649414062"/>

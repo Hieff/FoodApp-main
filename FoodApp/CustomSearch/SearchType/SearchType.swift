@@ -9,4 +9,5 @@ import Foundation
 enum SearchType {
     case recipe
     case ingredient
+    case category
 }

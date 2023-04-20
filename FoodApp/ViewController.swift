@@ -10,19 +10,23 @@ import UIKit
 class ViewController: UIViewController, UITabBarDelegate {
 
     @IBOutlet weak var searchBarField: UITextField!
-    
     @IBOutlet weak var recentImage: UIImageView!
     @IBOutlet weak var recentText: UILabel!
-    
     @IBOutlet weak var suggestionOne: UIImageView!
-    
     @IBOutlet weak var suggestionTwo: UIImageView!
+    @IBOutlet weak var categoryOne: UIImageView!
+    @IBOutlet weak var categoryTwo: UIImageView!
+    
+    
     
     
     let mealManager: FetchedMealManager = FetchedMealManager()
     let fatSecretManager: FatSecretManager = FatSecretManager()
     var sendingRecipe: MealDb.Meals? = nil
     var suggestions = [MealDb.Meals]()
+    var categoryMeals = [MealDb.Meals]()
+    var sendingMeals = [MealDb.Meals]()
+    var sendingCategory = ""
 
     
     override func viewDidLoad() {
@@ -36,6 +40,8 @@ class ViewController: UIViewController, UITabBarDelegate {
     override func viewDidAppear(_ animated: Bool) {
         let imageToShow = UserDefaults.standard.string(forKey: "recentImage") ?? ""
         let imageName = UserDefaults.standard.string(forKey: "recentName") ?? ""
+        categoryMeals = []
+        sendingMeals = []
         if(imageName != ""){
             recentText.text = imageName
             if imageToShow != ""  {
@@ -50,6 +56,7 @@ class ViewController: UIViewController, UITabBarDelegate {
         }
         if(mealManager.listOfMeals.count != 0){
             getSuggestions()
+            getCategories()
         }
        
     }
@@ -67,6 +74,16 @@ class ViewController: UIViewController, UITabBarDelegate {
     @objc func sendTwo(){
         sendingRecipe = suggestions[1]
         performSegue(withIdentifier: "mainToRecipe", sender: nil)
+    }
+    
+    @objc func categorySearchOne(){
+        sendingCategory = categoryMeals[0].strArea
+        performSegue(withIdentifier: "categorySearch", sender: nil)
+    }
+    
+    @objc func categorySearchTwo(){
+        sendingCategory = categoryMeals[1].strArea
+        performSegue(withIdentifier: "categorySearch", sender: nil)
     }
     
     
@@ -133,6 +150,56 @@ class ViewController: UIViewController, UITabBarDelegate {
         suggestionTwo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sendTwo)))
     }
     
+    func getCategories(){
+        if mealManager.listOfMeals.count != 0 {
+            var categories = [String]()
+            for (_, meal) in mealManager.listOfMeals{
+                if categories.contains(meal.strArea) == false {
+                    categories.append(meal.strArea)
+                }
+            }
+            
+            let randomCategory1 = categories.randomElement()
+            let randomCategory2 = categories.randomElement()
+            
+            for(_, meal) in mealManager.listOfMeals{
+                if meal.strArea == randomCategory1{
+                    categoryMeals.append(meal)
+                    break
+                }
+            }
+            
+            for(_, meal) in mealManager.listOfMeals{
+                if meal.strArea == randomCategory2{
+                    categoryMeals.append(meal)
+                    break
+                }
+            }
+            
+            ImageFinder().fetch(categoryMeals[0].strMealThumb!) { img in
+                DispatchQueue.main.async {
+                    self.categoryOne.image = img;
+                }
+            }
+            ImageFinder().fetch(categoryMeals[1].strMealThumb!) { img in
+                DispatchQueue.main.async {
+                    self.categoryTwo.image = img;
+                }
+            }
+            
+            print(categoryMeals)
+            categoryOne.isUserInteractionEnabled = true
+            categoryTwo.isUserInteractionEnabled = true
+            categoryOne.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(categorySearchOne)))
+            categoryTwo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(categorySearchTwo)))
+            
+            
+        }
+    }
+    
+    
+    
+    
     
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){}
     
@@ -185,6 +252,21 @@ class ViewController: UIViewController, UITabBarDelegate {
         if segue.identifier == "mainToRecipe"{
             let recipeSearchController = segue.destination as? RecipeViewController
             recipeSearchController?.selectedRecipe = sendingRecipe
+        }
+        
+        if segue.identifier == "categorySearch"{
+            let categorySearch = segue.destination as? SearchTableViewController
+            categorySearch?.mealManager = mealManager
+            categorySearch?.searchInput = ""
+            categorySearch?.homeController = self
+            categorySearch?.searchType = .ingredient
+            
+            for(_, meal) in mealManager.listOfMeals{
+                if meal.strArea == sendingCategory{
+                    sendingMeals.append(meal)
+                }
+            }
+            categorySearch?.searchedMeals = sendingMeals
         }
     }
 }
