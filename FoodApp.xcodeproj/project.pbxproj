@@ -15,6 +15,9 @@
 		018F3D0329B5EB41003547F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 018F3D0229B5EB41003547F1 /* Assets.xcassets */; };
 		018F3D0629B5EB41003547F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018F3D0429B5EB41003547F1 /* LaunchScreen.storyboard */; };
 		01D7348429F091DF0064732C /* SearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7348329F091DF0064732C /* SearchType.swift */; };
+		01D7348F29F164E00064732C /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7348D29F164DF0064732C /* Food.swift */; };
+		01D7349029F164E00064732C /* FoodSearchReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7348E29F164E00064732C /* FoodSearchReponse.swift */; };
+		01D7349329F1651A0064732C /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 01D7349229F1651A0064732C /* OAuthSwift */; };
 		01F5241C29D348D900BF31DF /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5241B29D348D900BF31DF /* SearchTableViewController.swift */; };
 		01F5241F29D4F6FE00BF31DF /* MealDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5241E29D4F6FE00BF31DF /* MealDb.swift */; };
 		01F5242129D5976800BF31DF /* FetchedMealManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F5242029D5976800BF31DF /* FetchedMealManager.swift */; };
@@ -45,6 +48,8 @@
 		018F3D0529B5EB41003547F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		018F3D0729B5EB41003547F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01D7348329F091DF0064732C /* SearchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchType.swift; sourceTree = "<group>"; };
+		01D7348D29F164DF0064732C /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		01D7348E29F164E00064732C /* FoodSearchReponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodSearchReponse.swift; sourceTree = "<group>"; };
 		01F5241B29D348D900BF31DF /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		01F5241E29D4F6FE00BF31DF /* MealDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDb.swift; sourceTree = "<group>"; };
 		01F5242029D5976800BF31DF /* FetchedMealManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedMealManager.swift; sourceTree = "<group>"; };
@@ -69,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01D7349329F1651A0064732C /* OAuthSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +158,8 @@
 		01F5242729EDAA6400BF31DF /* FatSecretAPI */ = {
 			isa = PBXGroup;
 			children = (
+				01D7348D29F164DF0064732C /* Food.swift */,
+				01D7348E29F164E00064732C /* FoodSearchReponse.swift */,
 				01F5242829EDAA8200BF31DF /* FatSecretManager.swift */,
 				01F5242A29EDAAAF00BF31DF /* FatSecret.swift */,
 			);
@@ -212,6 +220,9 @@
 			dependencies = (
 			);
 			name = FoodApp;
+			packageProductDependencies = (
+				01D7349229F1651A0064732C /* OAuthSwift */,
+			);
 			productName = FoodApp;
 			productReference = 018F3CF329B5EB3C003547F1 /* FoodApp.app */;
 			productType = "com.apple.product-type.application";
@@ -240,6 +251,9 @@
 				Base,
 			);
 			mainGroup = 018F3CEA29B5EB3C003547F1;
+			packageReferences = (
+				01D7349129F1651A0064732C /* XCRemoteSwiftPackageReference "OAuthSwift" */,
+			);
 			productRefGroup = 018F3CF429B5EB3C003547F1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -283,9 +297,11 @@
 				2CB6927029EED50B001D568A /* CalendarTableViewCell.swift in Sources */,
 				01F5243329EE239800BF31DF /* ImageFinder.swift in Sources */,
 				2C1CB05029ED6664005ED07F /* RecipeViewController.swift in Sources */,
+				01D7348F29F164E00064732C /* Food.swift in Sources */,
 				01F5241F29D4F6FE00BF31DF /* MealDb.swift in Sources */,
 				2C2FDF0E29F03F6000755D80 /* IngredientSearchViewController.swift in Sources */,
 				5418DA4C29EEDEB500B5C391 /* UserProfile.swift in Sources */,
+				01D7349029F164E00064732C /* FoodSearchReponse.swift in Sources */,
 				01F5241C29D348D900BF31DF /* SearchTableViewController.swift in Sources */,
 				2CB6926C29EED4C4001D568A /* CalendarViewController.swift in Sources */,
 				01F5242129D5976800BF31DF /* FetchedMealManager.swift in Sources */,
@@ -504,6 +520,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		01D7349129F1651A0064732C /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		01D7349229F1651A0064732C /* OAuthSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01D7349129F1651A0064732C /* XCRemoteSwiftPackageReference "OAuthSwift" */;
+			productName = OAuthSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		018F3CFF29B5EB3C003547F1 /* FoodApp.xcdatamodeld */ = {
