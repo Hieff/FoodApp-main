@@ -13,17 +13,26 @@ class FatSecretManager {
     
     
     init() {
-        /*generateSignature { token in
-            self.searchFood(query: "chicken", accessToken: token) { result in
-                
-            }
-        }*/
+        self.getFoodNutritions(query: "Chicken") { food in
+            print("Result: \(food)")
+        }
     }
     
-    func searchFood(query: String, accessToken: String, completion: @escaping (String) -> Void) {
+    func getFoodNutritions(query: String, callback: @escaping (Food) -> Void) {
+        generateSignature { token in
+            self.findFoodId(query: query, accessToken: token) { foodId in
+                self.searchFoodById(query: foodId, accessToken: token) { food in
+                    callback(food)
+                }
+            }
+        }
+    }
+    
+    func findFoodId(query: String, accessToken: String, callback: @escaping (String) -> Void) {
         let apiKey = "67ad3ae8b4fd41d2b646fff4658965a9"
         let apiSecret = "fbe652dff18549ac9656235180ace02e"
-
+        
+        
         let oauthswift = OAuth2Swift(
             consumerKey: apiKey,
             consumerSecret: apiSecret,
@@ -41,11 +50,51 @@ class FatSecretManager {
                 }
                 let jsonData = Data(dataString.utf8)
                 do {
-                    let searchResponse = try JSONDecoder().decode(FoodSearchResponse.self, from: jsonData)
                     // Access the search results in searchResponse.foods.food array
-                    print("reponse: \(searchResponse)")
+                    let searchResponse = try JSONDecoder().decode(FoodSearchResponse.self, from: jsonData)
+                    for food in searchResponse.foods.food {
+                        if (food.foodName.lowercased().contains(query.lowercased())) {
+                            callback(food.foodId)
+                            break
+                        }
+                    }
                 } catch {
-                    print("Error decoding search response: \(error.localizedDescription)")
+                    print("Failed to decode data: \(dataString)")
+                }
+            } catch {
+                print("Error search response: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func searchFoodById(query: String, accessToken: String, callback: @escaping (Food) -> Void) {
+        let apiKey = "67ad3ae8b4fd41d2b646fff4658965a9"
+        let apiSecret = "fbe652dff18549ac9656235180ace02e"
+
+        let oauthswift = OAuth2Swift(
+            consumerKey: apiKey,
+            consumerSecret: apiSecret,
+            authorizeUrl: "https://oauth.fatsecret.com/oauth/authenticate",
+            accessTokenUrl: "https://oauth.fatsecret.com/oauth/token",
+            responseType: "code"
+        )
+        oauthswift.client.credential.oauthToken = accessToken
+        oauthswift.client.get("https://platform.fatsecret.com/rest/server.api?method=food.get&food_id=\(query)&format=json") { result in
+            do {
+                let response = try result.get()
+                guard let dataString = response.string else {
+                   print("Unable to parse response data.")
+                   return
+                }
+                let jsonData = Data(dataString.utf8)
+                do {
+                    // Access the search results in searchResponse.foods.food array
+                    let searchResponse = try JSONDecoder().decode(FoodSearchResponse.self, from: jsonData)
+                    for food in searchResponse.foods.food {
+                        callback(food)
+                    }
+                } catch {
+                    print("Failed to decode data: \(dataString)")
                 }
             } catch {
                 print("Error search response: \(error.localizedDescription)")
