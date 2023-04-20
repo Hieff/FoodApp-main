@@ -12,6 +12,7 @@ class RecipeViewController: UIViewController {
     var selectedRecipe: MealDb.Meals? = nil
     var reviews = UserDefaults.standard.array(forKey: "reviews") ?? []
     var reviewRatings = UserDefaults.standard.array(forKey: "ratings") ?? []
+    var currentRating = "0"
     
     @IBOutlet weak var ratingButton: UIButton!
     @IBOutlet weak var recipeImage: UIImageView!
@@ -46,21 +47,22 @@ class RecipeViewController: UIViewController {
     func buidReviewButton(){
         
         let optionClosure = {(action: UIAction) in
-            self.changeReview(newReview: action.title)
-            print(action.title)}
+            self.changeReview(newReview: action.discoverabilityTitle!)
+            
+            
+        }
         
         ratingButton.menu = UIMenu(children: [
-            UIAction(title: "0", handler: optionClosure),
-            UIAction(title: "1", handler: optionClosure),
-            UIAction(title: "2", handler: optionClosure),
-            UIAction(title: "3", handler: optionClosure),
-            UIAction(title: "4", handler: optionClosure),
-            UIAction(title: "5", handler: optionClosure)])
-        
+            UIAction(title: "0 Stars", image: UIImage(named: "star0"), discoverabilityTitle: "0", handler: optionClosure),
+            UIAction(title: "1 Stars", image: UIImage(named: "star1"), discoverabilityTitle: "1", handler: optionClosure),
+            UIAction(title: "2 Stars", image: UIImage(named: "star2"), discoverabilityTitle: "2", handler: optionClosure),
+            UIAction(title: "3 Stars", image: UIImage(named: "star3"), discoverabilityTitle: "3", handler: optionClosure),
+            UIAction(title: "4 Stars", image: UIImage(named: "star4"), discoverabilityTitle: "4", handler: optionClosure),
+            UIAction(title: "5 Stars", image: UIImage(named: "star5"), discoverabilityTitle: "5", handler: optionClosure)])
         ratingButton.showsMenuAsPrimaryAction = true
         ratingButton.changesSelectionAsPrimaryAction = true
         
-        var currentRating = "0"
+        currentRating = "0"
         var counter = 0
         
         while (counter < reviews.count){
@@ -71,6 +73,10 @@ class RecipeViewController: UIViewController {
             counter += 1
         }
         ratingButton.setTitle(String(currentRating), for: ratingButton.state)
+        print("star" + currentRating)
+        ratingButton.setImage(UIImage(named: ("star" + currentRating)), for: .normal)
+        ratingButton.contentMode = .scaleAspectFill
+        ratingButton.imageView?.isHidden = false
         
     }
     
@@ -85,9 +91,11 @@ class RecipeViewController: UIViewController {
             }
             counter += 1
         }
+        currentRating = newReview
+        ratingButton.setImage(UIImage(named: ("star" + currentRating)), for: .normal)
+        ratingButton.contentMode = .scaleAspectFill
         reviews.append(selectedRecipe?.strMeal ?? "")
         reviewRatings.append(newReview)
-        print(reviews); print(reviewRatings)
         UserDefaults.standard.set(reviews, forKey: "reviews")
         UserDefaults.standard.set(reviewRatings, forKey: "ratings")
                                   
