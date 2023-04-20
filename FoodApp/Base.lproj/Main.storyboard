@@ -336,10 +336,17 @@
                                     <action selector="addToCalendarButton:" destination="v93-pw-CuA" eventType="touchUpInside" id="7Ma-VV-7R8"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Tm-7J-8PQ">
-                                <rect key="frame" x="98" y="62" width="195" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hCE-Qh-8TO">
+                                <rect key="frame" x="103" y="60" width="185" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <menu key="menu" id="nvq-Yh-9gs">
+                                    <children>
+                                        <command title="Item 1" id="V0J-8r-Xd6"/>
+                                        <command title="Item 2" id="c6E-Yr-CdU"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="46q-cO-qcW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -348,8 +355,8 @@
                     <connections>
                         <outlet property="InstructionText" destination="kXS-W4-4XY" id="flQ-42-gJD"/>
                         <outlet property="calorieText" destination="lf4-kH-Dxx" id="Thp-qX-Tdl"/>
+                        <outlet property="ratingButton" destination="hCE-Qh-8TO" id="dje-RB-hbf"/>
                         <outlet property="recipeImage" destination="Izg-Dd-pCH" id="lh0-hp-1Ut"/>
-                        <outlet property="starImage" destination="2Tm-7J-8PQ" id="mdm-CP-QKP"/>
                         <outlet property="timeText" destination="y6L-mT-2iX" id="QcH-9Q-Bgj"/>
                         <outlet property="titleText" destination="DrD-Oy-DCY" id="cg3-c8-hGg"/>
                         <segue destination="64Q-wM-TkH" kind="show" identifier="toIngredients" id="tQW-v6-trt"/>
@@ -359,7 +366,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXu-rF-8nJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="FFp-5v-btv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1534" y="4"/>
+            <point key="canvasLocation" x="1533.8461538461538" y="3.5545023696682461"/>
         </scene>
         <!--DatePickerController-->
         <scene sceneID="lLa-Ar-vix">

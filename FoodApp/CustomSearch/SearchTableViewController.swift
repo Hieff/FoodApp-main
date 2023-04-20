@@ -70,7 +70,18 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
             tableView.isHidden = false
             return mealManager!.getMealsBySearch(name: searchInput).count
         }
-        return (searchedMeals.count == 0 ? 0 : searchedMeals.count)
+        if searchType == .ingredient {
+            if searchedMeals.count == 0 {
+                noSearchResultImg.isHidden = false
+                tableView.isHidden = true
+                return 0
+            }
+            noSearchResultImg.isHidden = true
+            tableView.isHidden = false
+            return (searchedMeals.count)
+        }
+        return 0
+        
     }
 
     

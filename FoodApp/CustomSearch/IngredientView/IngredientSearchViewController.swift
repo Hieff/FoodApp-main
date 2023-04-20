@@ -57,7 +57,8 @@ class IngredientSearchViewController: UIViewController, UITableViewDelegate, UIT
                     matchCounter += 1
                 }
             }
-            if matchCounter > 0 {
+            let percentage = Double(inputtedIngredients.count) * 0.4
+            if Double(matchCounter) >= percentage && matchCounter > 0{
                 mealMatches.append((meal, matchCounter))
             }
         }
@@ -96,9 +97,8 @@ class IngredientSearchViewController: UIViewController, UITableViewDelegate, UIT
         let matches = findMatches()
         let ordered = filterMatches(input: matches)
         sendSearch = ordered
-        if sendSearch.count != 0 {
-            performSegue(withIdentifier: "ingredientSearchToSearch", sender: nil)
-        }
+        performSegue(withIdentifier: "ingredientSearchToSearch", sender: nil)
+ 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
